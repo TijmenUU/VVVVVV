@@ -3044,20 +3044,18 @@ void Graphics::render()
 
 void Graphics::bigrprint(int x, int y, std::string& t, int r, int g, int b, bool cen, float sc)
 {
-	if (r < 0) r = 0;
-	if (g < 0) g = 0;
-	if (b < 0) b = 0;
-	if (r > 255) r = 255;
-	if (g > 255) g = 255;
-	if (b > 255) b = 255;
+	r = Clamp(r, 0, 255);
+	g = Clamp(g, 0, 255);
+	b = Clamp(b, 0, 255);
 	ct.colour = getRGB(r, g, b);
 
 	x = x /  (sc);
 
 	x -= (len(t));
 
-	if (r < -1) r = -1; if (g < 0) g = 0; if (b < 0) b = 0;
-	if (r > 255) r = 255; if (g > 255) g = 255; if (b > 255) b = 255;
+	r = Clamp(r, -1, 255);
+	g = Clamp(g, 0, 255);
+	b = Clamp(b, 0, 255);
 	ct.colour = getRGB(r, g, b);
 
 	if (cen)
@@ -3094,6 +3092,20 @@ void Graphics::bigrprint(int x, int y, std::string& t, int r, int g, int b, bool
 		}
 		bfontpos+=bfontlen[cur]* sc;
 	}
+}
+
+int Clamp(int const value, int const min, int const max)
+{
+    if (value < min)
+    {
+        return min;
+    }
+    if (value > max)
+    {
+        return max;
+    }
+
+    return value;
 }
 
 void Graphics::drawtele(int x, int y, int t, int c, UtilityClass& help)
