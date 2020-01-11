@@ -19,8 +19,13 @@ Make sure the following packages are installed:
 - make
 - sdl2
 - sdl2_mixer
+- wget (to automatically download `data.zip`)
 
-Then simply run `make all` to build the `bin/vvvvvv` binary. Download the [makeandplay Windows version](http://distractionware.com/blog/category/vvvvvv-make-and-play/) and extract it. It should have extracted the zip archive into a binary and a `data.zip` file. Copy this file to `bin/` like so `cp -v /path/to/data.zip /path/to/this/repository/bin/`. Then either run `make check` or `cd` to `bin/` and `./vvvvvv`. 
+Then simply run `make all` to build the `bin/vvvvvv` binary. 
+
+Troubleshooting
+---------------
+If `data.zip` cannot be downloaded you can try obtaining it yourself. Download the [makeandplay version](http://distractionware.com/blog/category/vvvvvv-make-and-play/) and extract it. It should have extracted the `data.zip`  into `data/data.zip`. Copy this file to `bin/`, e.g. `cp -v data/data.zip bin/`. Then either run `make check` or `cd` to `bin/` and `./vvvvvv`. 
 
 A Word About Compiler Quirks
 ----------------------------
