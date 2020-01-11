@@ -84,16 +84,10 @@ int main(int argc, char *argv[])
 
     //Set up screen
 
-
-
-
     UtilityClass help;
     // Load Ini
 
-
     Graphics graphics;
-
-
 
     musicclass music;
     Game game;

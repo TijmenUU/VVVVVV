@@ -1,6 +1,7 @@
 #include <SDL2/SDL.h>
 #include <SoundSystem.h>
 #include <FileSystemUtils.h>
+#include <stdexcept>
 
 MusicTrack::MusicTrack(const char* fileName)
 {
@@ -30,7 +31,11 @@ SoundTrack::SoundTrack(const char* fileName)
 
 	unsigned char *mem;
 	size_t length = 0;
-	FILESYSTEM_loadFileToMemory(fileName, &mem, &length);
+	if (!FILESYSTEM_loadFileToMemory(fileName, &mem, &length))
+	{
+		throw std::runtime_error("Failed to load soundtrack file, aborting.");
+	}
+
 	SDL_RWops *fileIn = SDL_RWFromMem(mem, length);
 	sound = Mix_LoadWAV_RW(fileIn, 1);
 	FILESYSTEM_freeMemory(&mem);

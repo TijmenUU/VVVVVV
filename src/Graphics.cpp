@@ -102,9 +102,6 @@ Graphics::Graphics()
     }
     fadeamount = 0;
     fademode = 0;
-
-
-
 }
 
 Graphics::~Graphics()
