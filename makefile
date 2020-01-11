@@ -18,10 +18,14 @@ CPP_DEPS = $(patsubst src/%.cpp, build/%.d, ${CPP_SRCS})
 BINARY_NAME = vvvvvv
 BINARY_PATH = bin/${BINARY_NAME}
 
-all: ${BINARY_PATH}
+ASSET_DOWNLOAD_FILE = VVVVVV-MP-10202016.zip
+ASSET_DOWNLOAD_URL = http://www.flibitijibibo.com/${ASSET_DOWNLOAD_FILE}
+ASSET_FILE_NAME = data.zip
+
+all: ${BINARY_PATH} bin/${ASSET_FILE_NAME}
 
 clean:
-	-rm -rf build/ ${BINARY_PATH}
+	-rm -rf ${CPP_OBJS} ${C_OBJS} ${CPP_DEPS} ${C_DEPS} ${BINARY_PATH}
 
 check: all
 	cd bin/ && ./${BINARY_NAME}
@@ -41,7 +45,7 @@ debug:
 
 .PHONY: all clean check directories debug
 
-${BINARY_PATH}: directories ${CPP_OBJS} ${C_OBJS}
+${BINARY_PATH}: directories  ${CPP_OBJS} ${C_OBJS}
 	${CPP_COMPILER} ${C_OBJS} ${CPP_OBJS} ${CPP_LFLAGS} -o $@
 
 build/%.o: src/%.cpp
@@ -49,6 +53,15 @@ build/%.o: src/%.cpp
 
 build/%.o: src/%.c
 	${C_COMPILER} ${C_CFLAGS} -MMD -c $< -o $@
+
+bin/${ASSET_FILE_NAME}: build/${ASSET_FILE_NAME}
+	cp -v build/${ASSET_FILE_NAME} $@
+
+build/${ASSET_FILE_NAME}: build/${ASSET_DOWNLOAD_FILE}
+	unzip -p build/${ASSET_DOWNLOAD_FILE} build/VVVVVV-MP/${ASSET_FILE_NAME} > $@
+
+build/${ASSET_DOWNLOAD_FILE}:
+	wget ${ASSET_DOWNLOAD_URL} -O $@
 
 -include ${CPP_DEPS}
 
