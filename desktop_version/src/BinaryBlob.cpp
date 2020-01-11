@@ -5,7 +5,7 @@
 #include <string.h>
 
 /* FIXME: Abstract to FileSystemUtils! */
-#include <physfs.h>
+#include "../physfs/physfs.h"
 
 binaryBlob::binaryBlob()
 {

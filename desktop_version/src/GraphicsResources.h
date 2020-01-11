@@ -1,7 +1,8 @@
 #ifndef GRAPHICSRESOURCES_H
 #define GRAPHICSRESOURCES_H
 
-#include "SDL.h"
+#include <SDL2/SDL_surface.h>
+#include <SDL2/SDL_mixer.h>
 
 class GraphicsResources
 {

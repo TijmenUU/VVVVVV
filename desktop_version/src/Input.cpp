@@ -1,8 +1,10 @@
+#include <SDL2/SDL_keycode.h>
+#include <SDL2/SDL_gamecontroller.h>
 #include "Input.h"
 
 #include "MakeAndPlay.h"
 
-#include "tinyxml.h"
+#include "../tinyxml/tinyxml.h"
 
 // Found in titlerender.cpp
 void updategraphicsmode(Game& game, Graphics& dwgfx);

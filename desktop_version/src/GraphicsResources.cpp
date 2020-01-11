@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <SDL2/SDL_assert.h>
+
 // Used to load PNG data
 extern "C"
 {

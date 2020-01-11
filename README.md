@@ -16,7 +16,4 @@ Authors
 - 2.2 Update (SDL2/PhysicsFS/Steamworks port) by [Ethan Lee](http://www.flibitijibibo.com/)
 - Beta Testing by Sam Kaplan and Pauli Kohberger
 - Ending Picture by Pauli Kohberger
-
-Versions
-------------
-There are two versions of the VVVVVV source code available - the [desktop version](https://github.com/TerryCavanagh/VVVVVV/tree/master/desktop_version) (based on the C++ port, and currently live on Steam), and the [mobile version](https://github.com/TerryCavanagh/VVVVVV/tree/master/mobile_version) (based on a fork of the original flash source code, and currently live on iOS and Android).
+- Rewrite for Linux by Tijmen van Nesselrooij (2020)

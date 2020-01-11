@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <SDL2/SDL_events.h>
+#include <SDL2/SDL_clipboard.h>
+#include <SDL2/SDL_hints.h>
+
 void KeyPoll::setSensitivity(int _value)
 {
 	switch (_value)

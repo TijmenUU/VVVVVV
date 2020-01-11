@@ -1,7 +1,8 @@
 #ifndef TEXTBOX_H
 #define TEXTBOX_H
 
-#include "SDL.h"
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_rect.h>
 #include <string>
 #include <vector>
 

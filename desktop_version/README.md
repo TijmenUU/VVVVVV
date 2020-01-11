@@ -1,10 +1,8 @@
 How to Build
 ------------
-VVVVVV's official desktop versions are built with the following environments:
+VVVVVV's unofficial linux desktop version was built with the following environment:
 
-- Windows: Visual Studio 2010
-- macOS: Xcode CLT, currently targeting 10.9 SDK
-- GNU/Linux: CentOS 7
+- `uname -a` = Linux ARCHDESKTOP 5.4.10-arch1-1 #1 SMP PREEMPT Thu, 09 Jan 2020 10:14:29 +0000 x86_64 GNU/Linux
 
 The engine depends solely on [SDL2](https://libsdl.org/) and
 [SDL2_mixer](https://www.libsdl.org/projects/SDL_mixer/). All other dependencies
@@ -16,24 +14,11 @@ Steamworks support is included and the DLL is loaded dynamically, you do not
 need the SDK headers and there is no special Steam or non-Steam version. The
 current implementation has been tested with Steamworks SDK v1.46.
 
-To generate the projects on Windows:
-```
-# Put the SDL2/SDL2_mixer VC development libraries next to the VVVVVV folder!
-mkdir flibitBuild
-cd flibitBuild
-cmake -G "Visual Studio 10 2010" .. -DSDL2_INCLUDE_DIRS="../../SDL2-2.0.10/include;../../SDL2_mixer-2.0.4/include" -DSDL2_LIBRARIES="../../SDL2-2.0.10/lib/x86/SDL2;../../SDL2-2.0.10/lib/x86/SDL2main;../../SDL2_mixer-2.0.4/lib/x86/SDL2_mixer"
-```
-
-To generate everywhere else:
-```
-mkdir flibitBuild
-cd flibitBuild
-cmake ..
-```
-
-macOS may be fussy about the SDK version. How to fix this is up to the whims of
-however Apple wants to make CMAKE_OSX_SYSROOT annoying to configure and retain
-each time Xcode updates.
+Make sure the following packages are installed:
+- gcc
+- make
+- sdl2
+- sdl2_mixer
 
 A Word About Compiler Quirks
 ----------------------------

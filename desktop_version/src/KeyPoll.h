@@ -5,7 +5,9 @@
 #include <vector>
 #include <map> // FIXME: I should feel very bad for using C++ -flibit
 
-#include "SDL.h"
+#include <SDL2/SDL_keyboard.h>
+#include <SDL2/SDL_gamecontroller.h>
+#include <SDL2/SDL_mixer.h>
 
 enum Kybrd
 {

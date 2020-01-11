@@ -1,6 +1,6 @@
 #include "UtilityClass.h"
 
-#include "SDL.h"
+#include <SDL2/SDL_mixer.h>
 
 #include <sstream>
 

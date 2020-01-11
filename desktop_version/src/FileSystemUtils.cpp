@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <physfs.h>
+#include "../physfs/physfs.h"
 
 #if defined(_WIN32)
 #include <windows.h>

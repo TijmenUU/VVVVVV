@@ -1,7 +1,8 @@
 #ifndef BLOCKV_H
 #define BLOCKV_H
 
-#include "SDL.h"
+#include <SDL2/SDL_rect.h>
+#include <SDL2/SDL_mixer.h>
 #include <string>
 
 class blockclass
