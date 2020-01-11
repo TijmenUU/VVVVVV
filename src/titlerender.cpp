@@ -1,12 +1,12 @@
-#include <titlerender.h>
-#include <Graphics.h>
-#include <UtilityClass.h>
-#include <Maths.h>
-#include <Entity.h>
-#include <Map.h>
-#include <Script.h>
-#include <FileSystemUtils.h>
-#include <MakeAndPlay.h>
+#include <titlerender.hpp>
+#include <Graphics.hpp>
+#include <UtilityClass.hpp>
+#include <Maths.hpp>
+#include <Entity.hpp>
+#include <Map.hpp>
+#include <Script.hpp>
+#include <FileSystemUtils.hpp>
+#include <MakeAndPlay.hpp>
 
 extern scriptclass script;
 

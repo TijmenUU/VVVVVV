@@ -1,5 +1,5 @@
-#include <GraphicsResources.h>
-#include <FileSystemUtils.h>
+#include <GraphicsResources.hpp>
+#include <FileSystemUtils.hpp>
 #include <stdio.h>
 #include <stdlib.h>
 

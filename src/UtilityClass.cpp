@@ -1,4 +1,4 @@
-#include <UtilityClass.h>
+#include <UtilityClass.hpp>
 
 #include <SDL2/SDL_mixer.h>
 

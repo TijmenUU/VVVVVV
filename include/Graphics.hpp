@@ -1,19 +1,19 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
-#include <GraphicsResources.h>
+#include <GraphicsResources.hpp>
 #include <vector>
 
-#include <Maths.h>
-#include <Textbox.h>
-#include <UtilityClass.h>
-#include <Game.h>
+#include <Maths.hpp>
+#include <Textbox.hpp>
+#include <UtilityClass.hpp>
+#include <Game.hpp>
 
 #include <string>
 #include <algorithm>
 
-#include <GraphicsUtil.h>
-#include <Screen.h>
+#include <GraphicsUtil.hpp>
+#include <Screen.hpp>
 
 class map;
 

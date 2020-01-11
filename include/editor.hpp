@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <string>
-#include <Script.h>
+#include <Script.hpp>
 
 class KeyPoll; class Graphics; class Game; class mapclass; class entityclass; class UtilityClass;
 

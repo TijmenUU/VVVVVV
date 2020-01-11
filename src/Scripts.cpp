@@ -1,7 +1,7 @@
 #ifndef SCRIPTS_H
 #define SCRIPTS_H
 
-#include <Script.h>
+#include <Script.hpp>
 
 #include <algorithm>
 

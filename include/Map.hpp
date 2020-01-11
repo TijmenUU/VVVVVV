@@ -1,17 +1,17 @@
 #ifndef MAPGAME_H
 #define MAPGAME_H
 
-#include <Tower.h>
-#include <WarpClass.h>
-#include <Finalclass.h>
-#include <Labclass.h>
-#include <Spacestation2.h>
-#include <Otherlevel.h>
-#include <Entity.h>
-#include <Graphics.h>
+#include <Tower.hpp>
+#include <WarpClass.hpp>
+#include <Finalclass.hpp>
+#include <Labclass.hpp>
+#include <Spacestation2.hpp>
+#include <Otherlevel.hpp>
+#include <Entity.hpp>
+#include <Graphics.hpp>
 #include <vector>
-#include <Music.h>
-#include <editor.h>
+#include <Music.hpp>
+#include <editor.hpp>
 
 extern editorclass ed;
 

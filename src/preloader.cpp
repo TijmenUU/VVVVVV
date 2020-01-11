@@ -1,5 +1,5 @@
-#include <preloader.h>
-#include <Enums.h>
+#include <preloader.hpp>
+#include <Enums.hpp>
 
 int pre_fakepercent=0, pre_transition=30;
 bool pre_startgame=false;

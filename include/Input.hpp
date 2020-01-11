@@ -1,13 +1,13 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include <KeyPoll.h>
-#include <Graphics.h>
-#include <Game.h>
-#include <Entity.h>
-#include <UtilityClass.h>
-#include <Music.h>
-#include <Map.h>
+#include <KeyPoll.hpp>
+#include <Graphics.hpp>
+#include <Game.hpp>
+#include <Entity.hpp>
+#include <UtilityClass.hpp>
+#include <Music.hpp>
+#include <Map.hpp>
 
 void titleinput(KeyPoll& key, Graphics& dwgfx, mapclass& map, Game& game,
                 entityclass& obj, UtilityClass& help, musicclass& music);

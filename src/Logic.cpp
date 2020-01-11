@@ -1,5 +1,5 @@
-#include <Logic.h>
-#include <Network.h>
+#include <Logic.hpp>
+#include <Network.hpp>
 
 extern int temp;
 

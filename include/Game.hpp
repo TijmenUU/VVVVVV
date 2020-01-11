@@ -4,9 +4,9 @@
 #include <vector>
 #include <string>
 #include <SDL2/SDL_mixer.h>
-#include <Maths.h>
-#include <UtilityClass.h>
-#include <GraphicsUtil.h>
+#include <Maths.hpp>
+#include <UtilityClass.hpp>
+#include <GraphicsUtil.hpp>
 
 class entityclass;
 class mapclass;

@@ -1,4 +1,4 @@
-#include <Labclass.h>
+#include <Labclass.hpp>
 
 std::vector<std::string> labclass::loadlevel(int rx, int ry , Game& game, entityclass& obj)
 {

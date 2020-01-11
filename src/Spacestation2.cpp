@@ -1,5 +1,5 @@
-#include <Spacestation2.h>
-#include <MakeAndPlay.h>
+#include <Spacestation2.hpp>
+#include <MakeAndPlay.hpp>
 
 std::vector<std::string> spacestation2class::loadlevel(int rx, int ry, Game& game, entityclass& obj)
 {

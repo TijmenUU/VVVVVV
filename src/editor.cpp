@@ -1,17 +1,17 @@
-#include <editor.h>
-#include <Graphics.h>
-#include <Entity.h>
-#include <Music.h>
-#include <KeyPoll.h>
-#include <Map.h>
-#include <Script.h>
+#include <editor.hpp>
+#include <Graphics.hpp>
+#include <Entity.hpp>
+#include <Music.hpp>
+#include <KeyPoll.hpp>
+#include <Map.hpp>
+#include <Script.hpp>
 //#include "UtilityClass.h"
-#include <time.h>
+#include <ctime>
 
-#include <tinyxml/tinyxml.h>
+#include <tinyxml/tinyxml.hpp>
 
-#include <Enums.h>
-#include <FileSystemUtils.h>
+#include <Enums.hpp>
+#include <FileSystemUtils.hpp>
 
 #include <string>
 

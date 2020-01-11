@@ -1,6 +1,6 @@
 #include <SDL2/SDL.h>
-#include <SoundSystem.h>
-#include <FileSystemUtils.h>
+#include <SoundSystem.hpp>
+#include <FileSystemUtils.hpp>
 #include <stdexcept>
 
 MusicTrack::MusicTrack(const char* fileName)

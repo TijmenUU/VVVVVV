@@ -1,7 +1,7 @@
 #ifndef MUSIC_H
 #define MUSIC_H
 
-#include <SoundSystem.h>
+#include <SoundSystem.hpp>
 
 #include <vector>
 

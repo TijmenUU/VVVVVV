@@ -1,9 +1,9 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include <Maths.h>
-#include <Ent.h>
-#include <BlockV.h>
+#include <Maths.hpp>
+#include <Ent.hpp>
+#include <BlockV.hpp>
 
 #include <vector>
 #include <string>

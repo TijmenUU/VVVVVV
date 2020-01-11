@@ -1,12 +1,12 @@
 #ifndef TITLERENDERER_H
 #define TITLERENDERER_H
 
-#include <Graphics.h>
-#include <UtilityClass.h>
-#include <Maths.h>
-#include <Entity.h>
-#include <Map.h>
-#include <Script.h>
+#include <Graphics.hpp>
+#include <UtilityClass.hpp>
+#include <Maths.hpp>
+#include <Entity.hpp>
+#include <Map.hpp>
+#include <Script.hpp>
 
 class Stage
 {

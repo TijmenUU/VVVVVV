@@ -1,7 +1,7 @@
 #ifndef TERMINALSCRIPTS_H
 #define TERMINALSCRIPTS_H
 
-#include <Script.h>
+#include <Script.hpp>
 
 void scriptclass::loadother(std::string t)
 {

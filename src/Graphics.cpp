@@ -1,8 +1,8 @@
-#include <Graphics.h>
-#include <Maths.h>
-#include <Entity.h>
-#include <Map.h>
-#include <Screen.h>
+#include <Graphics.hpp>
+#include <Maths.hpp>
+#include <Entity.hpp>
+#include <Map.hpp>
+#include <Screen.hpp>
 
 Graphics::Graphics()
 {

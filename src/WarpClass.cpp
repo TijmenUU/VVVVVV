@@ -1,5 +1,5 @@
-#include <WarpClass.h>
-#include <MakeAndPlay.h>
+#include <WarpClass.hpp>
+#include <MakeAndPlay.hpp>
 
 std::vector<std::string> warpclass::loadlevel(int rx, int ry , Game& game, entityclass& obj)
 {

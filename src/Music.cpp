@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
-#include <Music.h>
-#include <BinaryBlob.h>
+#include <Music.hpp>
+#include <BinaryBlob.hpp>
 
 musicclass::musicclass()
 {

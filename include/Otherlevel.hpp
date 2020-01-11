@@ -1,8 +1,8 @@
 #ifndef OTHERLEVEL_H
 #define OTHERLEVEL_H
 
-#include <Game.h>
-#include <Entity.h>
+#include <Game.hpp>
+#include <Entity.hpp>
 
 #include <string>
 #include <vector>

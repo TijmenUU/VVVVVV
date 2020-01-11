@@ -1,7 +1,7 @@
-#include <Entity.h>
-#include <Game.h>
-#include <Map.h>
-#include <UtilityClass.h>
+#include <Entity.hpp>
+#include <Game.hpp>
+#include <Map.hpp>
+#include <UtilityClass.hpp>
 
 bool entityclass::checktowerspikes(int t, mapclass& map)
 {

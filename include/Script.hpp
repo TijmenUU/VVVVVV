@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include <Enums.h>
+#include <Enums.hpp>
 
 
 class KeyPoll; class Graphics; class Game; class mapclass; class entityclass; class UtilityClass;class musicclass;

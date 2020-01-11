@@ -1,4 +1,4 @@
-#include <Ent.h>
+#include <Ent.hpp>
 
 entclass::entclass()
 {

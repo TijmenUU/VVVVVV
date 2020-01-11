@@ -1,4 +1,4 @@
-#include <Finalclass.h>
+#include <Finalclass.hpp>
 
 std::vector<std::string> finalclass::loadlevel(int rx, int ry, Game& game, entityclass& obj)
 {

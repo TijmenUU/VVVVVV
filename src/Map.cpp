@@ -1,5 +1,5 @@
-#include <Map.h>
-#include <MakeAndPlay.h>
+#include <Map.hpp>
+#include <MakeAndPlay.hpp>
 
 extern editorclass ed;
 

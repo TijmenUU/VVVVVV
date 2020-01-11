@@ -1,9 +1,9 @@
-#include <Script.h>
-#include <Graphics.h>
-#include <Entity.h>
-#include <Music.h>
-#include <KeyPoll.h>
-#include <Map.h>
+#include <Script.hpp>
+#include <Graphics.hpp>
+#include <Entity.hpp>
+#include <Music.hpp>
+#include <KeyPoll.hpp>
+#include <Map.hpp>
 
 scriptclass::scriptclass()
 {

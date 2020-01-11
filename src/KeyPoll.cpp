@@ -1,4 +1,4 @@
-#include <KeyPoll.h>
+#include <KeyPoll.hpp>
 #include <stdio.h>
 #include <string.h>
 

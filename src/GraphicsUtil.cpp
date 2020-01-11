@@ -1,4 +1,4 @@
-#include <Graphics.h>
+#include <Graphics.hpp>
 
 void setRect( SDL_Rect& _r, int x, int y, int w, int h )
 {

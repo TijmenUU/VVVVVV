@@ -1,9 +1,9 @@
-#include <Enums.h>
+#include <Enums.hpp>
 
-#include <Game.h>
-#include <Graphics.h>
-#include <Entity.h>
-#include <Map.h>
+#include <Game.hpp>
+#include <Graphics.hpp>
+#include <Entity.hpp>
+#include <Map.hpp>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,12 +11,12 @@
 
 #include <sstream>
 
-#include <FileSystemUtils.h>
+#include <FileSystemUtils.hpp>
 
-#include <tinyxml/tinyxml.h>
+#include <tinyxml/tinyxml.hpp>
 
-#include <Network.h>
-#include <MakeAndPlay.h>
+#include <Network.hpp>
+#include <MakeAndPlay.hpp>
 
 // lol, Win32 -flibit
 #ifdef _WIN32

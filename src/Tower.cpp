@@ -1,5 +1,5 @@
-#include <Tower.h>
-#include <UtilityClass.h>
+#include <Tower.hpp>
+#include <UtilityClass.hpp>
 
 towerclass::towerclass()
 {

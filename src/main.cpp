@@ -1,30 +1,30 @@
 #include <SDL2/SDL.h>
-#include "SoundSystem.h"
+#include <SoundSystem.hpp>
 
-#include <UtilityClass.h>
-#include <Game.h>
-#include <Graphics.h>
-#include <KeyPoll.h>
-#include <titlerender.h>
+#include <UtilityClass.hpp>
+#include <Game.hpp>
+#include <Graphics.hpp>
+#include <KeyPoll.hpp>
+#include <titlerender.hpp>
 
-#include <Tower.h>
-#include <WarpClass.h>
-#include <Labclass.h>
-#include <Finalclass.h>
-#include <Map.h>
+#include <Tower.hpp>
+#include <WarpClass.hpp>
+#include <Labclass.hpp>
+#include <Finalclass.hpp>
+#include <Map.hpp>
 
-#include <Screen.h>
+#include <Screen.hpp>
 
-#include <Script.h>
+#include <Script.hpp>
 
-#include <Logic.h>
+#include <Logic.hpp>
 
-#include <Input.h>
-#include <editor.h>
-#include <preloader.h>
+#include <Input.hpp>
+#include <editor.hpp>
+#include <preloader.hpp>
 
-#include <FileSystemUtils.h>
-#include <Network.h>
+#include <FileSystemUtils.hpp>
+#include <Network.hpp>
 
 #include <stdio.h>
 #include <string.h>
