@@ -3042,6 +3042,20 @@ void Graphics::render()
 	}
 }
 
+int Clamp(int const value, int const min, int const max)
+{
+    if (value < min)
+    {
+        return min;
+    }
+    if (value > max)
+    {
+        return max;
+    }
+
+    return value;
+}
+
 void Graphics::bigrprint(int x, int y, std::string& t, int r, int g, int b, bool cen, float sc)
 {
 	r = Clamp(r, 0, 255);
@@ -3092,20 +3106,6 @@ void Graphics::bigrprint(int x, int y, std::string& t, int r, int g, int b, bool
 		}
 		bfontpos+=bfontlen[cur]* sc;
 	}
-}
-
-int Clamp(int const value, int const min, int const max)
-{
-    if (value < min)
-    {
-        return min;
-    }
-    if (value > max)
-    {
-        return max;
-    }
-
-    return value;
 }
 
 void Graphics::drawtele(int x, int y, int t, int c, UtilityClass& help)
