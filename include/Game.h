@@ -8,7 +8,6 @@
 #include <UtilityClass.h>
 #include <GraphicsUtil.h>
 
-
 class entityclass;
 class mapclass;
 class Graphics;
@@ -76,13 +75,13 @@ public:
 
     void deletetele();
 
-    void customstart(entityclass& obj, musicclass& music );
+    void customstart();
 
-    void start(entityclass& obj, musicclass& music );
+    void start(musicclass& music );
 
-    void startspecial(int t, entityclass& obj, musicclass& music);
+    void startspecial(int t);
 
-    void starttrial(int t, entityclass& obj, musicclass& music);
+    void starttrial(int t);
 
     void telegotoship()
     {

@@ -121,7 +121,7 @@ public:
 
 	void render();
 
-	bool Hitest(SDL_Surface* surface1, point p1, int col, SDL_Surface* surface2, point p2, int col2);
+	bool Hitest(SDL_Surface* surface1, point p1, SDL_Surface* surface2, point p2);
 
 	void drawentities(mapclass& map, entityclass& obj, UtilityClass& help);
 
@@ -148,12 +148,10 @@ public:
 	void drawbackground(int t, mapclass& map);
 	void drawtile3( int x, int y, int t, int off );
 	void drawentcolours( int x, int y, int t);
-	void drawtile2( int x, int y, int t, int r, int g, int b );
-	void drawtile( int x, int y, int t, int r, int g, int b );
+	void drawtile2( int x, int y, int t );
+	void drawtile( int x, int y, int t);
 	void drawtowertile( int x, int y, int t );
 	void drawtowertile3( int x, int y, int t, int off );
-
-	void drawtile(int x, int y, int t);
 
 	void drawmap(mapclass& map);
 

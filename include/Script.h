@@ -34,17 +34,15 @@ public:
     void run(KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map,
              entityclass& obj, UtilityClass& help, musicclass& music);
 
-    void resetgametomenu(Graphics& dwgfx, Game& game,mapclass& map,
-                         entityclass& obj, UtilityClass& help, musicclass& music);
+    void resetgametomenu(Graphics& dwgfx, Game& game, entityclass& obj);
 
-    void startgamemode(int t, KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map,
-                       entityclass& obj, UtilityClass& help, musicclass& music);
+    void startgamemode(int t, Graphics& dwgfx, Game& game, mapclass& map,
+                       entityclass& obj, musicclass& music);
 
     void teleport(Graphics& dwgfx, Game& game, mapclass& map,
-                  entityclass& obj, UtilityClass& help, musicclass& music);
+                  entityclass& obj, musicclass& music);
 
-    void hardreset(KeyPoll& key, Graphics& dwgfx, Game& game,mapclass& map,
-                   entityclass& obj, UtilityClass& help, musicclass& music);
+    void hardreset(Graphics& dwgfx, Game& game,mapclass& map, entityclass& obj);
 
     //Script contents
     std::vector<std::string> commands;

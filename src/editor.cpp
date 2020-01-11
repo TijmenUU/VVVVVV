@@ -2387,7 +2387,7 @@ void editorrender( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, ent
             for (int i = 0; i < 40; i++)
             {
                 temp=ed.contents[i + (ed.levx*40) + ed.vmult[j+(ed.levy*30)]];
-                if(temp>0) dwgfx.drawtile(i*8,j*8,temp,0,0,0);
+                if(temp>0) dwgfx.drawtile(i*8,j*8,temp);
             }
         }
     }
@@ -2398,7 +2398,7 @@ void editorrender( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, ent
             for (int i = 0; i < 40; i++)
             {
                 temp=ed.contents[i + (ed.levx*40) + ed.vmult[j+(ed.levy*30)]];
-                if(temp>0) dwgfx.drawtile2(i*8,j*8,temp,0,0,0);
+                if(temp>0) dwgfx.drawtile2(i*8,j*8,temp);
             }
         }
     }
@@ -2823,22 +2823,22 @@ void editorrender( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, ent
             {
                 for(int i=0; i<40; i++)
                 {
-                    dwgfx.drawtile(i*8,0-t2,(temp+1200+i)%1200,0,0,0);
-                    dwgfx.drawtile(i*8,8-t2,(temp+1200+40+i)%1200,0,0,0);
-                    dwgfx.drawtile(i*8,16-t2,(temp+1200+80+i)%1200,0,0,0);
-                    dwgfx.drawtile(i*8,24-t2,(temp+1200+120+i)%1200,0,0,0);
-                    dwgfx.drawtile(i*8,32-t2,(temp+1200+160+i)%1200,0,0,0);
+                    dwgfx.drawtile(i*8,0-t2,(temp+1200+i)%1200);
+                    dwgfx.drawtile(i*8,8-t2,(temp+1200+40+i)%1200);
+                    dwgfx.drawtile(i*8,16-t2,(temp+1200+80+i)%1200);
+                    dwgfx.drawtile(i*8,24-t2,(temp+1200+120+i)%1200);
+                    dwgfx.drawtile(i*8,32-t2,(temp+1200+160+i)%1200);
                 }
             }
             else
             {
                 for(int i=0; i<40; i++)
                 {
-                    dwgfx.drawtile2(i*8,0-t2,(temp+1200+i)%1200,0,0,0);
-                    dwgfx.drawtile2(i*8,8-t2,(temp+1200+40+i)%1200,0,0,0);
-                    dwgfx.drawtile2(i*8,16-t2,(temp+1200+80+i)%1200,0,0,0);
-                    dwgfx.drawtile2(i*8,24-t2,(temp+1200+120+i)%1200,0,0,0);
-                    dwgfx.drawtile2(i*8,32-t2,(temp+1200+160+i)%1200,0,0,0);
+                    dwgfx.drawtile2(i*8,0-t2,(temp+1200+i)%1200);
+                    dwgfx.drawtile2(i*8,8-t2,(temp+1200+40+i)%1200);
+                    dwgfx.drawtile2(i*8,16-t2,(temp+1200+80+i)%1200);
+                    dwgfx.drawtile2(i*8,24-t2,(temp+1200+120+i)%1200);
+                    dwgfx.drawtile2(i*8,32-t2,(temp+1200+160+i)%1200);
                 }
             }
             //Highlight our little block
@@ -2855,11 +2855,11 @@ void editorrender( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, ent
 
             if(ed.level[ed.levx+(ed.levy*ed.maxwidth)].tileset==0)
             {
-                dwgfx.drawtile(45,45-t2,ed.dmtile,0,0,0);
+                dwgfx.drawtile(45,45-t2,ed.dmtile);
             }
             else
             {
-                dwgfx.drawtile2(45,45-t2,ed.dmtile,0,0,0);
+                dwgfx.drawtile2(45,45-t2,ed.dmtile);
             }
         }
         else
@@ -2871,11 +2871,11 @@ void editorrender( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, ent
 
             if(ed.level[ed.levx+(ed.levy*ed.maxwidth)].tileset==0)
             {
-                dwgfx.drawtile(45,12,ed.dmtile,0,0,0);
+                dwgfx.drawtile(45,12,ed.dmtile);
             }
             else
             {
-                dwgfx.drawtile2(45,12,ed.dmtile,0,0,0);
+                dwgfx.drawtile2(45,12,ed.dmtile);
             }
         }
     }
@@ -3262,19 +3262,19 @@ void editorrender( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, ent
                 }
                 FillRect(dwgfx.backBuffer, 4+(ed.drawmode*tg), 209,20,20,dwgfx.getRGB(64,64,64));
                 //0:
-                dwgfx.drawtile(tx,ty,83,0,0,0);
-                dwgfx.drawtile(tx+8,ty,83,0,0,0);
-                dwgfx.drawtile(tx,ty+8,83,0,0,0);
-                dwgfx.drawtile(tx+8,ty+8,83,0,0,0);
+                dwgfx.drawtile(tx,ty,83);
+                dwgfx.drawtile(tx+8,ty,83);
+                dwgfx.drawtile(tx,ty+8,83);
+                dwgfx.drawtile(tx+8,ty+8,83);
                 //1:
                 tx+=tg;
-                dwgfx.drawtile(tx,ty,680,0,0,0);
-                dwgfx.drawtile(tx+8,ty,680,0,0,0);
-                dwgfx.drawtile(tx,ty+8,680,0,0,0);
-                dwgfx.drawtile(tx+8,ty+8,680,0,0,0);
+                dwgfx.drawtile(tx,ty,680);
+                dwgfx.drawtile(tx+8,ty,680);
+                dwgfx.drawtile(tx,ty+8,680);
+                dwgfx.drawtile(tx+8,ty+8,680);
                 //2:
                 tx+=tg;
-                dwgfx.drawtile(tx+4,ty+4,8,0,0,0);
+                dwgfx.drawtile(tx+4,ty+4,8);
                 //3:
                 tx+=tg;
                 dwgfx.drawsprite(tx,ty,22,196,196,196);
@@ -3283,16 +3283,16 @@ void editorrender( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, ent
                 dwgfx.drawsprite(tx,ty,21,196,196,196);
                 //5:
                 tx+=tg;
-                dwgfx.drawtile(tx,ty+4,3,0,0,0);
-                dwgfx.drawtile(tx+8,ty+4,4,0,0,0);
+                dwgfx.drawtile(tx,ty+4,3);
+                dwgfx.drawtile(tx+8,ty+4,4);
                 //6:
                 tx+=tg;
-                dwgfx.drawtile(tx,ty+4,24,0,0,0);
-                dwgfx.drawtile(tx+8,ty+4,24,0,0,0);
+                dwgfx.drawtile(tx,ty+4,24);
+                dwgfx.drawtile(tx+8,ty+4,24);
                 //7:
                 tx+=tg;
-                dwgfx.drawtile(tx,ty+4,1,0,0,0);
-                dwgfx.drawtile(tx+8,ty+4,1,0,0,0);
+                dwgfx.drawtile(tx,ty+4,1);
+                dwgfx.drawtile(tx+8,ty+4,1);
                 //8:
                 tx+=tg;
                 dwgfx.drawsprite(tx,ty,78+ed.entframe,196,196,196);
@@ -3596,7 +3596,7 @@ void editorrender( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, ent
     //dwgfx.backbuffer.unlock();
 }
 
-void editorlogic( KeyPoll& key, Graphics& dwgfx, Game& game, entityclass& obj, musicclass& music, mapclass& map, UtilityClass& help )
+void editorlogic( Graphics& dwgfx, Game& game, musicclass& music, mapclass& map, UtilityClass& help )
 {
     //Misc
     help.updateglow();
@@ -4115,7 +4115,7 @@ void editorinput( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, enti
                         }
                         else if (game.currentmenuoption == 4)
                         {
-                            music.playef(11, 10);
+                            music.playef(11);
                             game.createmenu("ed_settings");
                             map.nexttowercolour();
                         }
@@ -4125,14 +4125,14 @@ void editorinput( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, enti
                         if (game.currentmenuoption == 0)
                         {
                             //Change level description stuff
-                            music.playef(11, 10);
+                            music.playef(11);
                             game.createmenu("ed_desc");
                             map.nexttowercolour();
                         }
                         else if (game.currentmenuoption == 1)
                         {
                             //Enter script editormode
-                            music.playef(11, 10);
+                            music.playef(11);
                             ed.scripteditmod=true;
                             ed.clearscriptbuffer();
                             key.enabletextentry();
@@ -4146,7 +4146,7 @@ void editorinput( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, enti
                         }
                         else if (game.currentmenuoption == 2)
                         {
-                            music.playef(11, 10);
+                            music.playef(11);
                             game.createmenu("ed_music");
                             map.nexttowercolour();
                             if(ed.levmusic>0) music.play(ed.levmusic);
@@ -4183,7 +4183,7 @@ void editorinput( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, enti
                         }
                         else if (game.currentmenuoption == 5)
                         {
-                            music.playef(11, 10);
+                            music.playef(11);
                             game.createmenu("ed_quit");
                             map.nexttowercolour();
                         }
@@ -4205,11 +4205,11 @@ void editorinput( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, enti
                             {
                                 music.haltdasmusik();
                             }
-                            music.playef(11, 10);
+                            music.playef(11);
                         }
                         else if (game.currentmenuoption == 1)
                         {
-                            music.playef(11, 10);
+                            music.playef(11);
                             music.fadeout();
                             game.createmenu("ed_settings");
                             map.nexttowercolour();
@@ -4237,14 +4237,14 @@ void editorinput( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, enti
                         else if (game.currentmenuoption == 1)
                         {
                             //Quit without saving
-                            music.playef(11, 10);
+                            music.playef(11);
                             music.fadeout();
                             dwgfx.fademode = 2;
                         }
                         else if (game.currentmenuoption == 2)
                         {
                             //Go back to editor
-                            music.playef(11, 10);
+                            music.playef(11);
                             game.createmenu("ed_settings");
                             map.nexttowercolour();
                         }
@@ -4546,7 +4546,7 @@ void editorinput( KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map, enti
 
                         music.stopmusic();
                         dwgfx.backgrounddrawn=false;
-                        script.startgamemode(21, key, dwgfx, game, map, obj, help, music);
+                        script.startgamemode(21, dwgfx, game, map, obj, music);
                     }
                     //Return to game
                     //game.gamestate=GAMEMODE;

@@ -38,7 +38,7 @@ public:
 	// Play a sound effect! There are 16 channels, which iterate
 	void initefchannels();
 
-	void playef(int t, int offset = 0);
+	void playef(int t);
 
 	std::vector<SoundTrack> soundTracks;
 	std::vector<MusicTrack> musicTracks;

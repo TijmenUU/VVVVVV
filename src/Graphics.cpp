@@ -505,14 +505,7 @@ void Graphics::drawsprite( int x, int y, int t, int r, int g,  int b )
     BlitSurfaceColoured(sprites[t], NULL, backBuffer, &rect, ct);
 }
 
-void Graphics::drawtile( int x, int y, int t, int r, int g,  int b )
-{
-    SDL_Rect rect = { Sint16(x), Sint16(y), tiles_rect.w, tiles_rect.h };
-    BlitSurfaceStandard(tiles[t], NULL, backBuffer, &rect);
-}
-
-
-void Graphics::drawtile2( int x, int y, int t, int r, int g,  int b )
+void Graphics::drawtile2( int x, int y, int t )
 {
     SDL_Rect rect = { Sint16(x), Sint16(y), tiles_rect.w, tiles_rect.h };
     BlitSurfaceStandard(tiles2[t], NULL, backBuffer, &rect);
@@ -1201,7 +1194,7 @@ void Graphics::drawcoloredtile( int x, int y, int t, int r, int g, int b )
 }
 
 
-bool Graphics::Hitest(SDL_Surface* surface1, point p1, int col, SDL_Surface* surface2, point p2, int col2)
+bool Graphics::Hitest(SDL_Surface* surface1, point p1, SDL_Surface* surface2, point p2)
 {
 
     //find rectangle where they intersect:
@@ -2979,7 +2972,6 @@ void Graphics::screenshake()
 		//	screenbuffer.draw(backbuffer, flipmatrix);
 		//	flipmatrix.translate(-tpoint.x, -tpoint.y);
 
-		screenbuffer->ClearScreen(0x000);
 		tpoint.x =  (fRandom() * 7) - 4;
 		tpoint.y =  (fRandom() * 7) - 4;
 		SDL_Rect shakeRect;
@@ -2994,7 +2986,6 @@ void Graphics::screenshake()
 		//SDL_Rect rect;
 		//setRect(rect, blackBars/2, 0, screenbuffer->w, screenbuffer->h);
 		//SDL_BlitSurface(backBuffer, NULL, screenbuffer, &rect);
-		screenbuffer->ClearScreen(0x000);
 		tpoint.x =  static_cast<Sint32>((fRandom() * 7) - 4);
 		tpoint.y =  static_cast<Sint32>((fRandom() * 7) - 4);
 		SDL_Rect shakeRect;

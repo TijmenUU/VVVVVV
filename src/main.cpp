@@ -336,20 +336,20 @@ int main(int argc, char *argv[])
                 //Render
                 editorrender(key, graphics, game, map, obj, help);
                 ////Logic
-                editorlogic(key, graphics, game, obj, music, map, help);
+                editorlogic(graphics, game, music, map, help);
                 break;
             case TITLEMODE:
                 //Input
                 titleinput(key, graphics, map, game, obj, help, music);
                 //Render
-                titlerender(graphics, map, game, obj, help, music);
+                titlerender(graphics, map, game, help, music);
                 ////Logic
-                titlelogic(graphics, game, obj, help, music, map);
+                titlelogic(game, help, music, map);
                 break;
             case GAMEMODE:
                 if (map.towermode)
                 {
-					gameinput(key, graphics, game, map, obj, help, music);
+					gameinput(key, graphics, game, map, obj, music);
 
                     //if(game.recording==1)
                     //{
@@ -376,10 +376,10 @@ int main(int argc, char *argv[])
                             script.run(key, graphics, game, map, obj, help, music);
                         }
 
-                        gameinput(key, graphics, game, map, obj, help, music);
+                        gameinput(key, graphics, game, map, obj, music);
                         //}
-                        gamerender(graphics,map, game,  obj, help);
-                        gamelogic(graphics, game,obj, music, map,  help);
+                        gamerender(graphics,map, game, obj, help);
+                        gamelogic(graphics, game, obj, music, map, help);
 
 
                     }
@@ -394,7 +394,7 @@ int main(int argc, char *argv[])
                     {
                         mapinput(key, graphics, game, map, obj, help, music);
                     }
-                    maplogic(graphics, game, obj ,music , map, help );
+                    maplogic(help);
                     break;
                 case TELEPORTERMODE:
                     teleporterrender(graphics, game, map, obj, help);
@@ -406,7 +406,7 @@ int main(int argc, char *argv[])
                     {
                         if(game.useteleporter)
                         {
-                            teleporterinput(key, graphics, game, map, obj, help, music);
+                            teleporterinput(key, graphics, game, map, obj);
                         }
                         else
                         {
@@ -414,22 +414,22 @@ int main(int argc, char *argv[])
                             {
                                 script.run(key, graphics, game, map, obj, help, music);
                             }
-                            gameinput(key, graphics, game, map, obj, help, music);
+                            gameinput(key, graphics, game, map, obj, music);
                         }
                     }
-                    maplogic(graphics, game,  obj, music, map, help);
+                    maplogic(help);
                     break;
                 case GAMECOMPLETE:
-                    gamecompleterender(graphics, game, obj, help, map);
+                    gamecompleterender(graphics, game, help, map);
                     //Input
-                    gamecompleteinput(key, graphics, game, map, obj, help, music);
+                    gamecompleteinput(key, graphics, game, map);
                     //Logic
-                    gamecompletelogic(graphics, game,  obj, music, map, help);
+                    gamecompletelogic(graphics, game, map, help);
                     break;
                 case GAMECOMPLETE2:
-                    gamecompleterender2(graphics, game, obj, help);
+                    gamecompleterender2(graphics, game);
                     //Input
-                    gamecompleteinput2(key, graphics, game, map, obj, help, music);
+                    gamecompleteinput2(key, graphics, game, music);
                     //Logic
                     gamecompletelogic2(graphics, game,  obj, music, map, help);
                     break;

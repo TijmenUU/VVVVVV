@@ -3,7 +3,7 @@
 
 extern int temp;
 
-void titlelogic( Graphics& dwgfx, Game& game, entityclass& obj, UtilityClass& help, musicclass& music, mapclass& map)
+void titlelogic(Game& game, UtilityClass& help, musicclass& music, mapclass& map)
 {
     //Misc
     //map.updatetowerglow();
@@ -25,25 +25,25 @@ void titlelogic( Graphics& dwgfx, Game& game, entityclass& obj, UtilityClass& he
             }
             else if (game.menudest == "gameover2")
             {
-                music.playef(11, 10);
+                music.playef(11);
             }
             else if (game.menudest == "timetrialcomplete3")
             {
-                music.playef(3, 10);
+                music.playef(3);
             }
             game.createmenu(game.menudest);
         }
     }
 }
 
-void maplogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music, mapclass& map, UtilityClass& help)
+void maplogic(UtilityClass& help)
 {
     //Misc
     help.updateglow();
 }
 
 
-void gamecompletelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music, mapclass& map, UtilityClass& help)
+void gamecompletelogic(Graphics& dwgfx, Game& game, mapclass& map, UtilityClass& help)
 {
     //Misc
     map.updatetowerglow();
@@ -119,7 +119,7 @@ void gamecompletelogic2(Graphics& dwgfx, Game& game, entityclass& obj,  musiccla
         map.colstate = 10;
         game.gamestate = 1;
         dwgfx.fademode = 4;
-        music.playef(18, 10);
+        music.playef(18);
         game.createmenu("gamecompletecontinue");
         map.nexttowercolour();
     }
@@ -276,7 +276,7 @@ void towerlogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& musi
                 game.gethardestroom(map);
                 //start depressing sequence here...
                 if (game.gameoverdelay <= -10 && dwgfx.fademode==0) dwgfx.fademode = 2;
-                if (dwgfx.fademode == 1) script.resetgametomenu(dwgfx, game, map, obj, help, music);
+                if (dwgfx.fademode == 1) script.resetgametomenu(dwgfx, game, obj);
             }
             else
             {
@@ -309,9 +309,9 @@ void towerlogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& musi
                 {
                     game.hascontrol = false;
                 }
-                if(game.timetrialcountdown == 120) music.playef(21, 10);
-                if(game.timetrialcountdown == 90) music.playef(21, 10);
-                if(game.timetrialcountdown == 60) music.playef(21, 10);
+                if(game.timetrialcountdown == 120) music.playef(21);
+                if(game.timetrialcountdown == 90) music.playef(21);
+                if(game.timetrialcountdown == 60) music.playef(21);
                 if (game.timetrialcountdown == 30)
                 {
                     switch(game.timetriallevel)
@@ -335,7 +335,7 @@ void towerlogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& musi
                         music.play(15);
                         break;
                     }
-                    music.playef(22, 10);
+                    music.playef(22);
                 }
             }
 
@@ -350,7 +350,7 @@ void towerlogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& musi
                     {
                         obj.entities[i].tile = 144;
                     }
-                    music.playef(2, 10);
+                    music.playef(2);
                 }
             }
         }
@@ -521,7 +521,7 @@ void towerlogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& musi
         //Looping around, room change conditions!
     }
 
-    if (game.teleport_to_new_area) script.teleport(dwgfx, game, map,	obj, help, music);
+    if (game.teleport_to_new_area) script.teleport(dwgfx, game, map, obj, music);
 }
 
 void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music, mapclass& map, UtilityClass& help)
@@ -548,7 +548,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
             //change player to sad
             int i = obj.getplayer();
             obj.entities[i].tile = 144;
-            music.playef(2, 10);
+            music.playef(2);
         }
         if (obj.upset > 301) obj.upset = 301;
     }
@@ -638,7 +638,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                 game.swndelay = 0;
                 if (game.swntimer >= game.swnrecord)
                 {
-                    if (game.swnmessage == 0) music.playef(25, 10);
+                    if (game.swnmessage == 0) music.playef(25);
                     game.swnmessage = 1;
                     game.swnrecord = game.swntimer;
                 }
@@ -655,7 +655,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                 game.gethardestroom(map);
                 //start depressing sequence here...
                 if (game.gameoverdelay <= -10 && dwgfx.fademode==0) dwgfx.fademode = 2;
-                if (dwgfx.fademode == 1) script.resetgametomenu(dwgfx, game, map, obj, help, music);
+                if (dwgfx.fademode == 1) script.resetgametomenu(dwgfx, game, obj);
             }
             else
             {
@@ -699,7 +699,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                             temp = 1+int(fRandom() * 6);
                             if (temp == map.final_mapcol) temp = (temp + 1) % 6;
                             if (temp == 0) temp = 6;
-                            map.changefinalcol(temp, obj,game);
+                            map.changefinalcol(temp, obj);
                         }
                         else if (map.final_colorframe == 2)
                         {
@@ -707,7 +707,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                             temp = 1+int(fRandom() * 6);
                             if (temp == map.final_mapcol) temp = (temp + 1) % 6;
                             if (temp == 0) temp = 6;
-                            map.changefinalcol(temp, obj,game);
+                            map.changefinalcol(temp, obj);
                         }
                     }
                 }
@@ -749,7 +749,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                 }
                 else
                 {
-                    obj.generateswnwave(game, help, 0);
+                    obj.generateswnwave(game, 0);
                 }
             }
             else if(game.swngame==1)   //super gravitron game
@@ -765,7 +765,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
 												NETWORK_unlockAchievement("vvvvvvsupgrav5");
                         game.swnbestrank = 1;
                         game.swnmessage = 2+30;
-                        music.playef(26, 10);
+                        music.playef(26);
                     }
                 }
                 else if (game.swntimer >= 300 && game.swnrank == 1)
@@ -776,7 +776,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
 												NETWORK_unlockAchievement("vvvvvvsupgrav10");
                         game.swnbestrank = 2;
                         game.swnmessage = 2+30;
-                        music.playef(26, 10);
+                        music.playef(26);
                     }
                 }
                 else if (game.swntimer >= 450 && game.swnrank == 2)
@@ -787,7 +787,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
 												NETWORK_unlockAchievement("vvvvvvsupgrav15");
                         game.swnbestrank = 3;
                         game.swnmessage = 2+30;
-                        music.playef(26, 10);
+                        music.playef(26);
                     }
                 }
                 else if (game.swntimer >= 600 && game.swnrank == 3)
@@ -798,7 +798,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
 												NETWORK_unlockAchievement("vvvvvvsupgrav20");
                         game.swnbestrank = 4;
                         game.swnmessage = 2+30;
-                        music.playef(26, 10);
+                        music.playef(26);
                     }
                 }
                 else if (game.swntimer >= 900 && game.swnrank == 4)
@@ -809,7 +809,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
 												NETWORK_unlockAchievement("vvvvvvsupgrav30");
                         game.swnbestrank = 5;
                         game.swnmessage = 2+30;
-                        music.playef(26, 10);
+                        music.playef(26);
                     }
                 }
                 else if (game.swntimer >= 1800 && game.swnrank == 5)
@@ -820,11 +820,11 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
 												NETWORK_unlockAchievement("vvvvvvsupgrav60");
                         game.swnbestrank = 6;
                         game.swnmessage = 2+30;
-                        music.playef(26, 10);
+                        music.playef(26);
                     }
                 }
 
-                obj.generateswnwave(game, help, 1);
+                obj.generateswnwave(game, 1);
 
                 game.swncoldelay--;
                 if(game.swncoldelay<=0)
@@ -904,9 +904,9 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                 {
                     game.hascontrol = false;
                 }
-                if(game.timetrialcountdown == 120) music.playef(21, 10);
-                if(game.timetrialcountdown == 90) music.playef(21, 10);
-                if(game.timetrialcountdown == 60) music.playef(21, 10);
+                if(game.timetrialcountdown == 120) music.playef(21);
+                if(game.timetrialcountdown == 90) music.playef(21);
+                if(game.timetrialcountdown == 60) music.playef(21);
                 if (game.timetrialcountdown == 30)
                 {
                     switch(game.timetriallevel)
@@ -930,7 +930,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                         music.play(15);
                         break;
                     }
-                    music.playef(22, 10);
+                    music.playef(22);
                 }
             }
 
@@ -945,7 +945,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                     {
                         obj.entities[i].tile = 144;
                     }
-                    music.playef(2, 10);
+                    music.playef(2);
                 }
             }
         }
@@ -997,13 +997,13 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                             obj.updateentitylogic(ie, game);                          // Basic Physics
                             obj.entitymapcollision(ie, map);                          // Collisions with walls
 
-                            obj.hormovingplatformfix(ie, map);
+                            obj.hormovingplatformfix(ie);
                         }
                     }
                 }
                 //is the player standing on a moving platform?
                 int i = obj.getplayer();
-                float j = obj.entitycollideplatformfloor(map, i);
+                float j = obj.entitycollideplatformfloor(i);
                 if (j > -1000)
                 {
                     obj.entities[i].newxp = obj.entities[i].xp + j;
@@ -1011,7 +1011,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                 }
                 else
                 {
-                    j = obj.entitycollideplatformroof(map, i);
+                    j = obj.entitycollideplatformroof(i);
                     if (j > -1000)
                     {
                         obj.entities[i].newxp = obj.entities[i].xp + j;
@@ -1360,7 +1360,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
             {
             case 6:
                 obj.createentity(game, obj.entities[i].xp, 121.0f, 15.0f,1);  //Y=121, the floor in that particular place!
-                j = obj.getcompanion(6);
+                j = obj.getcompanion();
                 obj.entities[j].vx = obj.entities[i].vx;
                 obj.entities[j].dir = obj.entities[i].dir;
                 break;
@@ -1375,7 +1375,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                     {
                         obj.createentity(game, obj.entities[i].xp, 86.0f, 16.0f, 1);  //Y=86, the ROOF in that particular place!
                     }
-                    j = obj.getcompanion(7);
+                    j = obj.getcompanion();
                     obj.entities[j].vx = obj.entities[i].vx;
                     obj.entities[j].dir = obj.entities[i].dir;
                 }
@@ -1386,14 +1386,14 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                     if (game.roomx == 102)
                     {
                         obj.createentity(game, 310, 177, 17, 1);
-                        j = obj.getcompanion(8);
+                        j = obj.getcompanion();
                         obj.entities[j].vx = obj.entities[i].vx;
                         obj.entities[j].dir = obj.entities[i].dir;
                     }
                     else
                     {
                         obj.createentity(game, obj.entities[i].xp, 177.0f, 17.0f, 1);
-                        j = obj.getcompanion(8);
+                        j = obj.getcompanion();
                         obj.entities[j].vx = obj.entities[i].vx;
                         obj.entities[j].dir = obj.entities[i].dir;
                     }
@@ -1410,7 +1410,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                     {
                         obj.createentity(game, obj.entities[i].xp, 185.0f, 18.0f, 15, 0, 1);
                     }
-                    j = obj.getcompanion(9);
+                    j = obj.getcompanion();
                     obj.entities[j].vx = obj.entities[i].vx;
                     obj.entities[j].dir = obj.entities[i].dir;
                 }
@@ -1422,7 +1422,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                     if (obj.flags[59] == 0)
                     {
                         obj.createentity(game, 225.0f, 169.0f, 18, dwgfx.crewcolour(game.lastsaved), 0, 10);
-                        j = obj.getcompanion(10);
+                        j = obj.getcompanion();
                         obj.entities[j].vx = obj.entities[i].vx;
                         obj.entities[j].dir = obj.entities[i].dir;
                     }
@@ -1432,7 +1432,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                     if (obj.flags[59] == 1)
                     {
                         obj.createentity(game, 160.0f, 177.0f, 18, dwgfx.crewcolour(game.lastsaved), 0, 18, 1);
-                        j = obj.getcompanion(10);
+                        j = obj.getcompanion();
                         obj.entities[j].vx = obj.entities[i].vx;
                         obj.entities[j].dir = obj.entities[i].dir;
                     }
@@ -1440,7 +1440,7 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
                     {
                         obj.flags[59] = 1;
                         obj.createentity(game, obj.entities[i].xp, -20.0f, 18.0f, dwgfx.crewcolour(game.lastsaved), 0, 10, 0);
-                        j = obj.getcompanion(10);
+                        j = obj.getcompanion();
                         obj.entities[j].vx = obj.entities[i].vx;
                         obj.entities[j].dir = obj.entities[i].dir;
                     }
@@ -1543,5 +1543,5 @@ void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music
     }
 
     if (game.teleport_to_new_area)
-        script.teleport(dwgfx, game, map,	obj, help, music);
+        script.teleport(dwgfx, game, map, obj, music);
 }
