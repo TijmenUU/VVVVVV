@@ -1,11 +1,11 @@
 # Used to compile VVVVVV and tinyxml
 CPP_COMPILER = g++
-CPP_CFLAGS = -std=c++17 -Wall -MMD -Iinclude/
+CPP_CFLAGS = -std=c++17 -Wall -Wextra -Iinclude/
 CPP_LFLAGS = -Wall -lSDL2 -lSDL2_mixer
 
 # Used to compile physfs and lodepng
 C_COMPILER = gcc
-C_CFLAGS = -MMD -Iinclude/
+C_CFLAGS = -Iinclude/
 
 C_SRCS = $(shell find src/ -name '*.c')
 C_OBJS = $(patsubst src/%.c, build/%.o, ${C_SRCS})
@@ -26,6 +26,9 @@ clean:
 check: all
 	cd bin/ && ./${BINARY_NAME}
 
+check-syntax:
+	${CPP_COMPILER} ${C_CFLAGS} -fsyntax-only ${CPP_SRCS}
+
 directories:
 	mkdir -p bin/ build/lodepng build/physfs build/src build/tinyxml
 
@@ -42,10 +45,10 @@ ${BINARY_PATH}: directories ${CPP_OBJS} ${C_OBJS}
 	${CPP_COMPILER} ${C_OBJS} ${CPP_OBJS} ${CPP_LFLAGS} -o $@
 
 build/%.o: src/%.cpp
-	${CPP_COMPILER} ${CPP_CFLAGS} -c $< -o $@
+	${CPP_COMPILER} ${CPP_CFLAGS} -MMD -c $< -o $@
 
 build/%.o: src/%.c
-	${C_COMPILER} ${C_CFLAGS} -c $< -o $@
+	${C_COMPILER} ${C_CFLAGS} -MMD -c $< -o $@
 
 -include ${CPP_DEPS}
 
