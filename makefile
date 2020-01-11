@@ -18,7 +18,7 @@ CPP_DEPS = $(patsubst src/%.cpp, build/%.d, ${CPP_SRCS})
 BINARY_NAME = vvvvvv
 BINARY_PATH = bin/${BINARY_NAME}
 
-ASSET_DOWNLOAD_FILE = VVVVVV-MP-10202016.zip
+ASSET_DOWNLOAD_FILE = vvvvvv-mp-11192019-bin
 ASSET_DOWNLOAD_URL = http://www.flibitijibibo.com/${ASSET_DOWNLOAD_FILE}
 ASSET_FILE_NAME = data.zip
 
@@ -54,11 +54,11 @@ build/%.o: src/%.cpp
 build/%.o: src/%.c
 	${C_COMPILER} ${C_CFLAGS} -MMD -c $< -o $@
 
-bin/${ASSET_FILE_NAME}: build/${ASSET_FILE_NAME}
-	cp -v build/${ASSET_FILE_NAME} $@
+bin/${ASSET_FILE_NAME}: build/data/${ASSET_FILE_NAME}
+	cp $< $@
 
-build/${ASSET_FILE_NAME}: build/${ASSET_DOWNLOAD_FILE}
-	unzip -p build/${ASSET_DOWNLOAD_FILE} build/VVVVVV-MP/${ASSET_FILE_NAME} > $@
+build/data/${ASSET_FILE_NAME}: build/${ASSET_DOWNLOAD_FILE}
+	-unzip -u -d build/ build/${ASSET_DOWNLOAD_FILE}
 
 build/${ASSET_DOWNLOAD_FILE}:
 	wget ${ASSET_DOWNLOAD_URL} -O $@
