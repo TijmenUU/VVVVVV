@@ -20,6 +20,8 @@ Make sure the following packages are installed:
 - sdl2
 - sdl2_mixer
 
+Then simply run `make all` to build the `bin/vvvvvv` binary. Download the [makeandplay Windows version](http://distractionware.com/blog/category/vvvvvv-make-and-play/) and extract it. It should have extracted the zip archive into a binary and a `data.zip` file. Copy this file to `bin/` like so `cp -v /path/to/data.zip /path/to/this/repository/bin/`. Then either run `make check` or `cd` to `bin/` and `./vvvvvv`. 
+
 A Word About Compiler Quirks
 ----------------------------
 
