@@ -1,7 +1,7 @@
 # Used to compile VVVVVV and tinyxml
 CPP_COMPILER = g++
-CPP_CFLAGS = -std=c++14 -MMD -Iinclude/
-CPP_LFLAGS = -lSDL2 -lSDL2_mixer
+CPP_CFLAGS = -std=c++17 -Wall -MMD -Iinclude/
+CPP_LFLAGS = -Wall -lSDL2 -lSDL2_mixer
 
 # Used to compile physfs and lodepng
 C_COMPILER = gcc
