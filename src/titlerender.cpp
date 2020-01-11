@@ -20,12 +20,12 @@ int tb;
 
 std::string tempstring;
 
-void updategraphicsmode(Game& game, Graphics& dwgfx)
+void updategraphicsmode()
 {
     swfStage = stage;
 }
 
-void titlerender(Graphics& dwgfx, mapclass& map, Game& game, entityclass& obj, UtilityClass& help, musicclass& music)
+void titlerender(Graphics& dwgfx, mapclass& map, Game& game, UtilityClass& help, musicclass& music)
 {
 
     FillRect(dwgfx.backBuffer, 0,0,dwgfx.backBuffer->w, dwgfx.backBuffer->h, 0x00000000 );
@@ -1233,7 +1233,7 @@ void titlerender(Graphics& dwgfx, mapclass& map, Game& game, entityclass& obj, U
     //dwgfx.backbuffer.unlock();
 }
 
-void gamecompleterender(Graphics& dwgfx, Game& game, entityclass& obj, UtilityClass& help, mapclass& map)
+void gamecompleterender(Graphics& dwgfx, Game& game, UtilityClass& help, mapclass& map)
 {
     //dwgfx.backbuffer.lock();
     FillRect(dwgfx.backBuffer, 0x000000);
@@ -1445,7 +1445,7 @@ void gamecompleterender(Graphics& dwgfx, Game& game, entityclass& obj, UtilityCl
     //dwgfx.backbuffer.unlock();
 }
 
-void gamecompleterender2(Graphics& dwgfx, Game& game, entityclass& obj, UtilityClass& help)
+void gamecompleterender2(Graphics& dwgfx, Game& game)
 {
     //dwgfx.backbuffer.lock();
     FillRect(dwgfx.backBuffer, 0x000000);
@@ -1546,7 +1546,7 @@ void gamerender(Graphics& dwgfx, mapclass& map, Game& game, entityclass& obj, Ut
                 }
 
                 //Animate the entities
-                obj.animateentities(i, game, help);
+                obj.animateentities(i, game);
             }
         }
 
@@ -2790,7 +2790,7 @@ void towerrender(Graphics& dwgfx, Game& game, mapclass& map, entityclass& obj, U
             }
 
             //Animate the entities
-            obj.animateentities(i, game, help);
+            obj.animateentities(i, game);
         }
     }
 

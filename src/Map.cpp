@@ -523,7 +523,7 @@ int mapclass::maptiletoenemycol(int t)
 	return 11;
 }
 
-void mapclass::changefinalcol(int t, entityclass& obj, Game& game)
+void mapclass::changefinalcol(int t, entityclass& obj)
 {
 	//change the map to colour t - for the game's final stretch.
 	//First up, the tiles. This is just a setting:
@@ -1040,7 +1040,7 @@ void mapclass::gotoroom(int rx, int ry, Graphics& dwgfx, Game& game, entityclass
 		if (game.roomx == 104 && game.roomy == 112) music.niceplay(4);
 	}
 	temp = rx + (ry * 100);
-	loadlevel(game.roomx, game.roomy, dwgfx, game, obj, music);
+	loadlevel(game.roomx, game.roomy, dwgfx, game, obj);
 
 
 	dwgfx.backgrounddrawn = false; //Used for background caching speedup
@@ -1152,7 +1152,7 @@ std::string mapclass::currentarea(int t)
 	return "???";
 }
 
-void mapclass::loadlevel(int rx, int ry, Graphics& dwgfx, Game& game, entityclass& obj, musicclass& music)
+void mapclass::loadlevel(int rx, int ry, Graphics& dwgfx, Game& game, entityclass& obj)
 {
 	int t;
 	//t = rx + (ry * 100);
@@ -1404,7 +1404,7 @@ void mapclass::loadlevel(int rx, int ry, Graphics& dwgfx, Game& game, entityclas
 		}
 
 		dwgfx.rcol = 6;
-		changefinalcol(final_mapcol, obj, game);
+		changefinalcol(final_mapcol, obj);
 		break;
 	case 7: //Final Level, Tower 1
 		tdrawback = true;

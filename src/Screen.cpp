@@ -3,6 +3,7 @@
 #include <GraphicsUtil.h>
 
 #include <stdlib.h>
+#include <stdexcept>
 
 // Used to create the window icon
 extern "C"
@@ -46,7 +47,11 @@ Screen::Screen()
 	size_t length = 0;
 	unsigned char *data;
 	unsigned int width, height;
-	FILESYSTEM_loadFileToMemory("VVVVVV.png", &fileIn, &length);
+	if (!FILESYSTEM_loadFileToMemory("VVVVVV.png", &fileIn, &length))
+	{
+		throw std::runtime_error("Error loading window icon, aborting");
+	}
+
 	lodepng_decode24(&data, &width, &height, fileIn, length);
 	FILESYSTEM_freeMemory(&fileIn);
 	SDL_Surface *icon = SDL_CreateRGBSurfaceFrom(
@@ -203,9 +208,4 @@ void Screen::toggleLinearFilter()
 		320,
 		240
 	);
-}
-
-void Screen::ClearScreen( int colour )
-{
-    //FillRect(m_screen, colour) ;
 }

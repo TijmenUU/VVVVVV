@@ -188,16 +188,24 @@ SDL_Surface * ScaleSurfaceSlow( SDL_Surface *_surface, int Width, int Height)
 
 
 	for(Sint32 y = 0; y < _surface->h; y++)
-		for(Sint32 x = 0; x < _surface->w; x++)
+	{
+        for(Sint32 x = 0; x < _surface->w; x++)
+        {
 			for(Sint32 o_y = 0; o_y < _stretch_factor_y; ++o_y)
+            {
 				for(Sint32 o_x = 0; o_x < _stretch_factor_x; ++o_x)
+                {
 					DrawPixel(_ret, static_cast<Sint32>(_stretch_factor_x * x) + o_x,
 					static_cast<Sint32>(_stretch_factor_y * y) + o_y, ReadPixel(_surface, x, y));
+                }
+            }
+        }
+    }
 
-		// DrawPixel(_ret, static_cast<Sint32>(_stretch_factor_x * x) + o_x,
-		//static_cast<Sint32>(_stretch_factor_y * y) + o_y, ReadPixel(_surface, x, y));
+    // DrawPixel(_ret, static_cast<Sint32>(_stretch_factor_x * x) + o_x,
+    //static_cast<Sint32>(_stretch_factor_y * y) + o_y, ReadPixel(_surface, x, y));
 
-		return _ret;
+    return _ret;
 }
 
 SDL_Surface *  FlipSurfaceHorizontal(SDL_Surface* _src)

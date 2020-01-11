@@ -102,9 +102,6 @@ Graphics::Graphics()
     }
     fadeamount = 0;
     fademode = 0;
-
-
-
 }
 
 Graphics::~Graphics()
@@ -508,14 +505,7 @@ void Graphics::drawsprite( int x, int y, int t, int r, int g,  int b )
     BlitSurfaceColoured(sprites[t], NULL, backBuffer, &rect, ct);
 }
 
-void Graphics::drawtile( int x, int y, int t, int r, int g,  int b )
-{
-    SDL_Rect rect = { Sint16(x), Sint16(y), tiles_rect.w, tiles_rect.h };
-    BlitSurfaceStandard(tiles[t], NULL, backBuffer, &rect);
-}
-
-
-void Graphics::drawtile2( int x, int y, int t, int r, int g,  int b )
+void Graphics::drawtile2( int x, int y, int t )
 {
     SDL_Rect rect = { Sint16(x), Sint16(y), tiles_rect.w, tiles_rect.h };
     BlitSurfaceStandard(tiles2[t], NULL, backBuffer, &rect);
@@ -1204,7 +1194,7 @@ void Graphics::drawcoloredtile( int x, int y, int t, int r, int g, int b )
 }
 
 
-bool Graphics::Hitest(SDL_Surface* surface1, point p1, int col, SDL_Surface* surface2, point p2, int col2)
+bool Graphics::Hitest(SDL_Surface* surface1, point p1, SDL_Surface* surface2, point p2)
 {
 
     //find rectangle where they intersect:
@@ -2982,7 +2972,6 @@ void Graphics::screenshake()
 		//	screenbuffer.draw(backbuffer, flipmatrix);
 		//	flipmatrix.translate(-tpoint.x, -tpoint.y);
 
-		screenbuffer->ClearScreen(0x000);
 		tpoint.x =  (fRandom() * 7) - 4;
 		tpoint.y =  (fRandom() * 7) - 4;
 		SDL_Rect shakeRect;
@@ -2997,7 +2986,6 @@ void Graphics::screenshake()
 		//SDL_Rect rect;
 		//setRect(rect, blackBars/2, 0, screenbuffer->w, screenbuffer->h);
 		//SDL_BlitSurface(backBuffer, NULL, screenbuffer, &rect);
-		screenbuffer->ClearScreen(0x000);
 		tpoint.x =  static_cast<Sint32>((fRandom() * 7) - 4);
 		tpoint.y =  static_cast<Sint32>((fRandom() * 7) - 4);
 		SDL_Rect shakeRect;
@@ -3042,22 +3030,34 @@ void Graphics::render()
 	}
 }
 
+int Clamp(int const value, int const min, int const max)
+{
+    if (value < min)
+    {
+        return min;
+    }
+    if (value > max)
+    {
+        return max;
+    }
+
+    return value;
+}
+
 void Graphics::bigrprint(int x, int y, std::string& t, int r, int g, int b, bool cen, float sc)
 {
-	if (r < 0) r = 0;
-	if (g < 0) g = 0;
-	if (b < 0) b = 0;
-	if (r > 255) r = 255;
-	if (g > 255) g = 255;
-	if (b > 255) b = 255;
+	r = Clamp(r, 0, 255);
+	g = Clamp(g, 0, 255);
+	b = Clamp(b, 0, 255);
 	ct.colour = getRGB(r, g, b);
 
 	x = x /  (sc);
 
 	x -= (len(t));
 
-	if (r < -1) r = -1; if (g < 0) g = 0; if (b < 0) b = 0;
-	if (r > 255) r = 255; if (g > 255) g = 255; if (b > 255) b = 255;
+	r = Clamp(r, -1, 255);
+	g = Clamp(g, 0, 255);
+	b = Clamp(b, 0, 255);
 	ct.colour = getRGB(r, g, b);
 
 	if (cen)

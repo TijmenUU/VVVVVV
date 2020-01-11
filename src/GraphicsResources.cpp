@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include <SDL2/SDL_assert.h>
+#include <stdexcept>
 
 // Used to load PNG data
 extern "C"
@@ -36,7 +37,11 @@ SDL_Surface* LoadImage(const char *filename, bool noBlend = true, bool noAlpha =
 
 	unsigned char *fileIn = NULL;
 	size_t length = 0;
-	FILESYSTEM_loadFileToMemory(filename, &fileIn, &length);
+	if (!FILESYSTEM_loadFileToMemory(filename, &fileIn, &length))
+	{
+		throw std::runtime_error("Failed to load image file, aborting.");
+	}
+
 	if (noAlpha)
 	{
 		lodepng_decode24(&data, &width, &height, fileIn, length);

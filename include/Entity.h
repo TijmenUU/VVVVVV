@@ -68,7 +68,7 @@ public:
 
     void gravcreate(Game& game, int ypos, int dir, int xoff = 0, int yoff = 0);
 
-    void generateswnwave(Game& game, UtilityClass& help, int t);
+    void generateswnwave(Game& game, int t);
 
     void createblock(int t, int xp, int yp, int w, int h, int trig = 0);
 
@@ -99,11 +99,11 @@ public:
 
     bool updateentities(int i, UtilityClass& help, Game& game, musicclass& music);
 
-    void animateentities(int i, Game& game, UtilityClass& help);
+    void animateentities(int i, Game& game);
 
     bool gettype(int t);
 
-    int getcompanion(int t);
+    int getcompanion();
 
     int getplayer();
 
@@ -122,7 +122,7 @@ public:
 
     bool entitycollide(int a, int b);
 
-    bool checkdirectional(int t);
+    bool checkdirectional();
 
     bool checkdamage();
 
@@ -159,9 +159,9 @@ public:
 
 		void customwarplinecheck(int i);
 
-    float entitycollideplatformroof(mapclass& map, int t);
+    float entitycollideplatformroof(int t);
 
-    float entitycollideplatformfloor(mapclass& map, int t);
+    float entitycollideplatformfloor(int t);
 
     bool entitycollidefloor(mapclass& map, int t);
 
@@ -186,7 +186,7 @@ public:
 
     void scmmovingplatformfix(int t, mapclass& map);
 
-    void hormovingplatformfix(int t, mapclass& map);
+    void hormovingplatformfix(int t);
 
     void entitycollisioncheck(Graphics& dwgfx, Game& game, mapclass& map, musicclass& music);
 

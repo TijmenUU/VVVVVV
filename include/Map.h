@@ -42,7 +42,7 @@ public:
 
     int maptiletoenemycol(int t);
 
-    void changefinalcol(int t, entityclass& obj, Game& game);
+    void changefinalcol(int t, entityclass& obj);
 
     void setcol(const int r1, const int g1, const int b1 , const int r2, const  int g2, const int b2, const int c);
 
@@ -79,7 +79,7 @@ public:
 
     std::string currentarea(int t);
 
-    void loadlevel(int rx, int ry, Graphics& dwgfx, Game& game, entityclass& obj, musicclass& music);
+    void loadlevel(int rx, int ry, Graphics& dwgfx, Game& game, entityclass& obj);
 
 
     std::vector <int> roomdeaths;

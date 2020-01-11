@@ -8,6 +8,7 @@
 #include <string.h>
 
 #include <physfs/physfs.h>
+#include <stdexcept>
 
 #if defined(_WIN32)
 #include <windows.h>
@@ -36,7 +37,11 @@ void FILESYSTEM_init(char *argvZero)
 	char output[MAX_PATH];
 	int mkdirResult;
 
-	PHYSFS_init(argvZero);
+	if (PHYSFS_init(argvZero) == 0)
+	{
+		std::printf("FILESYSTEM_init: Error %i when initializing PhysFS\n", PHYSFS_getLastErrorCode());
+		throw std::runtime_error("Failed to initialize PhysFS, aborting");
+	}
 
 	/* Determine the OS user directory */
 	PLATFORM_getOSDirectory(output);
@@ -45,22 +50,26 @@ void FILESYSTEM_init(char *argvZero)
 	mkdirResult = mkdir(output, 0777);
 
 	/* Mount our base user directory */
-	PHYSFS_mount(output, NULL, 1);
-	printf("Base directory: %s\n", output);
+	if (PHYSFS_mount(output, NULL, 1) == 0)
+	{
+		std::printf("FILESYSTEM_init: Error %i when mounting base user directory %s\n", PHYSFS_getLastErrorCode(), output);
+		throw std::runtime_error("Failed to mount base user directory, aborting");
+	}
+	printf("FILESYSTEM_init: Base directory: %s\n", output);
 
 	/* Create save directory */
 	strcpy(saveDir, output);
 	strcat(saveDir, "saves");
 	strcat(saveDir, PHYSFS_getDirSeparator());
 	mkdir(saveDir, 0777);
-	printf("Save directory: %s\n", saveDir);
+	printf("FILESYSTEM_init: Save directory: %s\n", saveDir);
 
 	/* Create level directory */
 	strcpy(levelDir, output);
 	strcat(levelDir, "levels");
 	strcat(levelDir, PHYSFS_getDirSeparator());
 	mkdirResult |= mkdir(levelDir, 0777);
-	printf("Level directory: %s\n", levelDir);
+	printf("FILESYSTEM_init: Level directory: %s\n", levelDir);
 
 	/* We didn't exist until now, migrate files! */
 	if (VNEEDS_MIGRATION)
@@ -75,7 +84,12 @@ void FILESYSTEM_init(char *argvZero)
 #else
 	strcpy(output, "data.zip");
 #endif
-	PHYSFS_mount(output, NULL, 1);
+	std::printf("FILESYSTEM_init: Loading stock content from %s\n", output);
+	if (PHYSFS_mount(output, NULL, 1) == 0)
+	{
+		std::printf("FILESYSTEM_init: Error %i mounting PhysFS on %s\n", PHYSFS_getLastErrorCode(), output);
+		throw std::runtime_error("Failed to mount PhysFS, aborting");
+	}
 }
 
 void FILESYSTEM_deinit()
@@ -93,21 +107,29 @@ char *FILESYSTEM_getUserLevelDirectory()
 	return levelDir;
 }
 
-void FILESYSTEM_loadFileToMemory(const char *name, unsigned char **mem, size_t *len)
+bool FILESYSTEM_loadFileToMemory(const char *name, unsigned char **mem, size_t *len)
 {
 	PHYSFS_File *handle = PHYSFS_openRead(name);
 	if (handle == NULL)
 	{
-		return;
+		std::printf("FILESYSTEM_loadFileToMemory: Error <%i> when loading <%s>\n", PHYSFS_getLastErrorCode(), name);
+		return false;
 	}
+
 	PHYSFS_uint32 length = PHYSFS_fileLength(handle);
 	if (len != NULL)
 	{
 		*len = length;
 	}
 	*mem = (unsigned char*) malloc(length);
-	PHYSFS_read(handle, *mem, 1, length);
+	if (PHYSFS_readBytes(handle, *mem, length) < 0)
+	{
+		std::printf("FILESYSTEM_loadFileToMemory: Error <%i> reading bytes from <%s>\n", PHYSFS_getLastErrorCode(), name);
+		return false;
+	}
+
 	PHYSFS_close(handle);
+	return true;
 }
 
 void FILESYSTEM_freeMemory(unsigned char **mem)
@@ -141,21 +163,8 @@ std::vector<std::string> FILESYSTEM_getLevelDirFileNames()
 
 void PLATFORM_getOSDirectory(char* output)
 {
-#if defined(__linux__)
-	const char *homeDir = getenv("XDG_DATA_HOME");
-	if (homeDir == NULL)
-	{
-		strcpy(output, PHYSFS_getUserDir());
-		strcat(output, ".local/share/VVVVVV/");
-	}
-	else
-	{
-		strcpy(output, homeDir);
-		strcat(output, "/VVVVVV/");
-	}
-#elif defined(__APPLE__)
-	strcpy(output, PHYSFS_getUserDir());
-	strcat(output, "Library/Application Support/VVVVVV/");
+#if defined(__linux__) || defined(__APPLE__)
+	strcpy(output, PHYSFS_getPrefDir("distractionware", "VVVVVV"));
 #elif defined(_WIN32)
 	SHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, output);
 	strcat(output, "\\VVVVVV\\");

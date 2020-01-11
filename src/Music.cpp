@@ -439,7 +439,7 @@ void musicclass::initefchannels()
 	// for (var i:int = 0; i < 16; i++) efchannel.push(new SoundChannel);
 }
 
-void musicclass::playef(int t, int offset)
+void musicclass::playef(int t)
 {
 	// efchannel[currentefchan] = efchan[t].play(offset);
 	// currentefchan++;
