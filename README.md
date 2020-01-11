@@ -17,3 +17,7 @@ Authors
 - Beta Testing by Sam Kaplan and Pauli Kohberger
 - Ending Picture by Pauli Kohberger
 - Rewrite for Linux by Tijmen van Nesselrooij (2020)
+
+Building
+--------
+See [the build documentation](./BUILD.md).
