@@ -36,14 +36,10 @@ check-syntax:
 directories:
 	mkdir -p bin/ build/lodepng build/physfs build/src build/tinyxml
 
-debug:
-	echo "CPP Source files:"
-	echo ${CPP_SRCS}
-	echo ""
-	echo "C Source files:"
-	echo ${C_SRCS}
+format:
+	clang-format -i $(shell find src/ -maxdepth 1 -name *.cpp) $(shell find include/ -maxdepth 1 -name *.hpp)
 
-.PHONY: all clean check directories debug
+.PHONY: all clean check check-syntax directories format
 
 ${BINARY_PATH}: directories  ${CPP_OBJS} ${C_OBJS}
 	${CPP_COMPILER} ${C_OBJS} ${CPP_OBJS} ${CPP_LFLAGS} -o $@
