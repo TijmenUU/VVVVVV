@@ -1,5 +1,4 @@
 #include <Network.hpp>
-
 #include <SDL2/SDL.h>
 #include <stdint.h>
 #include <stdio.h>

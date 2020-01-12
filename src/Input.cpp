@@ -1,11 +1,9 @@
 #include <Input.hpp>
+#include <MakeAndPlay.hpp>
 #include <SDL2/SDL_gamecontroller.h>
 #include <SDL2/SDL_keycode.h>
-#include <titlerender.hpp>
-
-#include <MakeAndPlay.hpp>
-
 #include <tinyxml/tinyxml.hpp>
+#include <titlerender.hpp>
 
 void updatebuttonmappings(Game & game, KeyPoll & key, musicclass & music, int bind)
 {

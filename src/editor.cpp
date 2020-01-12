@@ -6,14 +6,11 @@
 #include <Script.hpp>
 #include <editor.hpp>
 //#include "UtilityClass.h"
-#include <ctime>
-
-#include <tinyxml/tinyxml.hpp>
-
 #include <Enums.hpp>
 #include <FileSystemUtils.hpp>
-
+#include <ctime>
 #include <string>
+#include <tinyxml/tinyxml.hpp>
 
 edlevelclass::edlevelclass()
 {

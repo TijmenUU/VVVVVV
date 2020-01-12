@@ -1,12 +1,10 @@
 #pragma once
-
-#include <map> // FIXME: I should feel very bad for using C++ -flibit
-#include <string>
-#include <vector>
-
 #include <SDL2/SDL_gamecontroller.h>
 #include <SDL2/SDL_keyboard.h>
 #include <SDL2/SDL_mixer.h>
+#include <map> // FIXME: I should feel very bad for using C++ -flibit
+#include <string>
+#include <vector>
 
 enum Kybrd
 {

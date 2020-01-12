@@ -1,9 +1,7 @@
 #pragma once
-
+#include <Enums.hpp>
 #include <string>
 #include <vector>
-
-#include <Enums.hpp>
 
 class KeyPoll;
 class Graphics;

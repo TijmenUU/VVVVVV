@@ -1,14 +1,11 @@
 #include <FileSystemUtils.hpp>
-
-#include <string>
-#include <vector>
-
+#include <physfs/physfs.h>
+#include <stdexcept>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#include <physfs/physfs.h>
-#include <stdexcept>
+#include <string>
+#include <vector>
 
 #if defined(_WIN32)
 #	include <shlobj.h>

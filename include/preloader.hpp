@@ -1,5 +1,4 @@
 #pragma once
-
 #include <Game.hpp>
 #include <Graphics.hpp>
 #include <UtilityClass.hpp>

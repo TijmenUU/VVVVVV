@@ -1,5 +1,4 @@
 #pragma once
-
 #include <Script.hpp>
 #include <string>
 #include <vector>

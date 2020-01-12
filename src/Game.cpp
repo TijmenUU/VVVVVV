@@ -1,22 +1,16 @@
-#include <Enums.hpp>
-
 #include <Entity.hpp>
+#include <Enums.hpp>
+#include <FileSystemUtils.hpp>
 #include <Game.hpp>
 #include <Graphics.hpp>
+#include <MakeAndPlay.hpp>
 #include <Map.hpp>
-
+#include <Network.hpp>
+#include <sstream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#include <sstream>
-
-#include <FileSystemUtils.hpp>
-
 #include <tinyxml/tinyxml.hpp>
-
-#include <MakeAndPlay.hpp>
-#include <Network.hpp>
 
 // lol, Win32 -flibit
 #ifdef _WIN32

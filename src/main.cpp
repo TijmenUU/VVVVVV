@@ -1,33 +1,25 @@
-#include <SDL2/SDL.h>
-#include <SoundSystem.hpp>
-
+#include <FileSystemUtils.hpp>
+#include <Finalclass.hpp>
 #include <Game.hpp>
 #include <Graphics.hpp>
-#include <KeyPoll.hpp>
-#include <UtilityClass.hpp>
-#include <titlerender.hpp>
-
-#include <Finalclass.hpp>
-#include <Labclass.hpp>
-#include <Map.hpp>
-#include <Tower.hpp>
-#include <WarpClass.hpp>
-
-#include <Screen.hpp>
-
-#include <Script.hpp>
-
-#include <Logic.hpp>
-
 #include <Input.hpp>
+#include <KeyPoll.hpp>
+#include <Labclass.hpp>
+#include <Logic.hpp>
+#include <Map.hpp>
+#include <Network.hpp>
+#include <SDL2/SDL.h>
+#include <Screen.hpp>
+#include <Script.hpp>
+#include <SoundSystem.hpp>
+#include <Tower.hpp>
+#include <UtilityClass.hpp>
+#include <WarpClass.hpp>
 #include <editor.hpp>
 #include <preloader.hpp>
-
-#include <FileSystemUtils.hpp>
-#include <Network.hpp>
-
 #include <stdio.h>
 #include <string.h>
+#include <titlerender.hpp>
 
 scriptclass script;
 edentities edentity[3000];

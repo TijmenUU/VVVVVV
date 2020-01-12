@@ -1,8 +1,6 @@
 #ifndef SCRIPTS_H
 #define SCRIPTS_H
-
 #include <Script.hpp>
-
 #include <algorithm>
 
 extern scriptclass script;

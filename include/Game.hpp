@@ -1,5 +1,4 @@
 #pragma once
-
 #include <GraphicsUtil.hpp>
 #include <Maths.hpp>
 #include <SDL2/SDL_mixer.h>

@@ -1,10 +1,9 @@
 #include <KeyPoll.hpp>
-#include <stdio.h>
-#include <string.h>
-
 #include <SDL2/SDL_clipboard.h>
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_hints.h>
+#include <stdio.h>
+#include <string.h>
 
 void KeyPoll::setSensitivity(int _value)
 {

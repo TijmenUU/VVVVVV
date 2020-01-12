@@ -1,10 +1,9 @@
 #include <FileSystemUtils.hpp>
 #include <GraphicsResources.hpp>
-#include <stdio.h>
-#include <stdlib.h>
-
 #include <SDL2/SDL_assert.h>
 #include <stdexcept>
+#include <stdio.h>
+#include <stdlib.h>
 
 // Used to load PNG data
 extern "C"

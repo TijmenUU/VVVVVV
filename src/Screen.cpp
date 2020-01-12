@@ -1,7 +1,6 @@
 #include <FileSystemUtils.hpp>
 #include <GraphicsUtil.hpp>
 #include <Screen.hpp>
-
 #include <stdexcept>
 #include <stdlib.h>
 

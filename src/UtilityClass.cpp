@@ -1,7 +1,5 @@
-#include <UtilityClass.hpp>
-
 #include <SDL2/SDL_mixer.h>
-
+#include <UtilityClass.hpp>
 #include <sstream>
 
 /* Used by UtilityClass::GCString to generate a button list */

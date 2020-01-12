@@ -1,9 +1,7 @@
 #pragma once
-
 #include <BlockV.hpp>
 #include <Ent.hpp>
 #include <Maths.hpp>
-
 #include <string>
 #include <vector>
 

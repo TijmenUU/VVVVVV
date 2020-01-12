@@ -1,8 +1,6 @@
 #pragma once
-
 #include <Entity.hpp>
 #include <Game.hpp>
-
 #include <string>
 #include <vector>
 

@@ -1,7 +1,5 @@
 #pragma once
-
 #include <SoundSystem.hpp>
-
 #include <vector>
 
 #define musicroom(rx, ry) ((rx) + ((ry)*20))

@@ -1,18 +1,14 @@
 #pragma once
-
-#include <GraphicsResources.hpp>
-#include <vector>
-
 #include <Game.hpp>
+#include <GraphicsResources.hpp>
+#include <GraphicsUtil.hpp>
 #include <Maths.hpp>
+#include <Screen.hpp>
 #include <Textbox.hpp>
 #include <UtilityClass.hpp>
-
 #include <algorithm>
 #include <string>
-
-#include <GraphicsUtil.hpp>
-#include <Screen.hpp>
+#include <vector>
 
 class map;
 
