@@ -1,12 +1,11 @@
 #pragma once
 
-
+#include <map> // FIXME: I should feel very bad for using C++ -flibit
 #include <string>
 #include <vector>
-#include <map> // FIXME: I should feel very bad for using C++ -flibit
 
-#include <SDL2/SDL_keyboard.h>
 #include <SDL2/SDL_gamecontroller.h>
+#include <SDL2/SDL_keyboard.h>
 #include <SDL2/SDL_mixer.h>
 
 enum Kybrd
@@ -74,12 +73,9 @@ public:
 	std::string keybuffer;
 
 private:
-	std::map<SDL_JoystickID, SDL_GameController*> controllers;
+	std::map<SDL_JoystickID, SDL_GameController *> controllers;
 	std::map<SDL_GameControllerButton, bool> buttonmap;
 	int xVel, yVel;
 	bool useFullscreenSpaces;
 	Uint32 wasFullscreen;
 };
-
-
-

@@ -1,9 +1,6 @@
 #include <Ent.hpp>
 
-entclass::entclass()
-{
-	clear();
-}
+entclass::entclass() { clear(); }
 
 void entclass::clear()
 {
@@ -64,22 +61,22 @@ bool entclass::outside()
 {
 	// Returns true if any point of the entity is outside the map.
 	// Adjusts velocity for a clean collision.
-	if (xp < x1)
+	if(xp < x1)
 	{
 		xp = x1;
 		return true;
 	}
-	if (yp < y1)
+	if(yp < y1)
 	{
 		yp = y1;
 		return true;
 	}
-	if (xp + w > x2)
+	if(xp + w > x2)
 	{
 		xp = x2 - w;
 		return true;
 	}
-	if (yp + h > y2)
+	if(yp + h > y2)
 	{
 		yp = y2 - h;
 		return true;

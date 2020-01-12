@@ -1,182 +1,177 @@
 #pragma once
 
-
+#include <Entity.hpp>
+#include <Finalclass.hpp>
+#include <Graphics.hpp>
+#include <Labclass.hpp>
+#include <Music.hpp>
+#include <Otherlevel.hpp>
+#include <Spacestation2.hpp>
 #include <Tower.hpp>
 #include <WarpClass.hpp>
-#include <Finalclass.hpp>
-#include <Labclass.hpp>
-#include <Spacestation2.hpp>
-#include <Otherlevel.hpp>
-#include <Entity.hpp>
-#include <Graphics.hpp>
-#include <vector>
-#include <Music.hpp>
 #include <editor.hpp>
+#include <vector>
 
 extern editorclass ed;
 
 class mapclass
 {
 public:
-    mapclass();
+	mapclass();
 
-    int RGB(int red,int green,int blue);
+	int RGB(int red, int green, int blue);
 
-    int intpol(int a, int b, float c);
+	int intpol(int a, int b, float c);
 
-    void setteleporter(int t, int x, int y);
+	void setteleporter(int t, int x, int y);
 
-    void settrinket(int t, int x, int y);
+	void settrinket(int t, int x, int y);
 
-    void resetmap();
+	void resetmap();
 
-    void resetnames();
+	void resetnames();
 
-    void transformname(int t);
+	void transformname(int t);
 
-    std::string getglitchname(int x, int y);
+	std::string getglitchname(int x, int y);
 
-    void initmapdata();
+	void initmapdata();
 
-    int finalat(int x, int y);
+	int finalat(int x, int y);
 
-    int maptiletoenemycol(int t);
+	int maptiletoenemycol(int t);
 
-    void changefinalcol(int t, entityclass& obj);
+	void changefinalcol(int t, entityclass & obj);
 
-    void setcol(const int r1, const int g1, const int b1 , const int r2, const  int g2, const int b2, const int c);
+	void setcol(const int r1, const int g1, const int b1, const int r2, const int g2, const int b2, const int c);
 
-    void updatetowerglow();
+	void updatetowerglow();
 
-    void nexttowercolour();
+	void nexttowercolour();
 
-    void settowercolour(int t);
+	void settowercolour(int t);
 
-    bool spikecollide(int x, int y);
+	bool spikecollide(int x, int y);
 
-    bool collide(int x, int y);
+	bool collide(int x, int y);
 
-    void fillareamap(std::vector<std::string>& tmap);
+	void fillareamap(std::vector<std::string> & tmap);
 
-    void settile(int xp, int yp, int t);
+	void settile(int xp, int yp, int t);
 
-    void fillcontent(std::vector<std::string>& tmap);
+	void fillcontent(std::vector<std::string> & tmap);
 
+	int area(int _rx, int _ry);
 
-    int area(int _rx, int _ry);
+	void exploretower();
 
-    void exploretower();
+	void hideship();
 
-    void hideship();
+	void showship();
 
-    void showship();
+	void resetplayer(Graphics & dwgfx, Game & game, entityclass & obj, musicclass & music);
 
-    void resetplayer(Graphics& dwgfx, Game& game, entityclass& obj, musicclass& music);
+	void
+	warpto(int rx, int ry, int t, int tx, int ty, Graphics & dwgfx, Game & game, entityclass & obj, musicclass & music);
 
-    void warpto(int rx, int ry , int t, int tx, int ty,  Graphics& dwgfx, Game& game, entityclass& obj, musicclass& music);
+	void gotoroom(int rx, int ry, Graphics & dwgfx, Game & game, entityclass & obj, musicclass & music);
 
-    void gotoroom(int rx, int ry, Graphics& dwgfx,  Game& game, entityclass& obj, musicclass& music);
+	std::string currentarea(int t);
 
-    std::string currentarea(int t);
+	void loadlevel(int rx, int ry, Graphics & dwgfx, Game & game, entityclass & obj);
 
-    void loadlevel(int rx, int ry, Graphics& dwgfx, Game& game, entityclass& obj);
+	std::vector<int> roomdeaths;
+	std::vector<int> roomdeathsfinal;
+	std::vector<int> areamap;
+	std::vector<int> contents;
+	std::vector<int> explored;
+	std::vector<int> vmult;
+	std::vector<std::string> tmap;
 
+	int temp;
+	int temp2;
+	int j;
+	int background;
+	int rcol;
+	int tileset;
+	bool warpx;
+	bool warpy;
 
-    std::vector <int> roomdeaths;
-    std::vector <int> roomdeathsfinal;
-    std::vector <int> areamap;
-    std::vector <int> contents;
-    std::vector <int> explored;
-    std::vector <int> vmult;
-    std::vector <std::string> tmap;
+	std::string roomname;
 
-    int temp;
-    int temp2;
-    int j;
-    int background;
-    int rcol;
-    int tileset;
-    bool warpx;
-    bool warpy;
+	//Special tower stuff
+	bool towermode;
+	float ypos;
+	int bypos;
+	int cameramode;
+	int cameraseek, cameraseekframe;
+	int resumedelay;
+	bool minitowermode;
+	int scrolldir;
 
+	//This is the old colour cycle
+	int r, g, b;
+	int check, cmode;
+	int towercol;
+	int colstate, colstatedelay;
+	int colsuperstate;
+	int spikeleveltop, spikelevelbottom;
+	bool tdrawback;
+	int bscroll;
+	//final level navigation
+	int finalx;
+	int finaly;
+	bool finalmode;
+	bool finalstretch;
 
-    std::string roomname;
+	//Variables for playing custom levels
+	bool custommode;
+	bool custommodeforreal;
+	int customx, customy;
+	int customwidth, customheight;
+	int customtrinkets;
+	int customcrewmates;
+	int custommmxoff, custommmyoff, custommmxsize, custommmysize;
+	int customzoom;
+	bool customshowmm;
 
-    //Special tower stuff
-    bool towermode;
-    float ypos;
-    int bypos;
-    int cameramode;
-    int cameraseek, cameraseekframe;
-    int resumedelay;
-    bool minitowermode;
-    int scrolldir;
+	std::vector<std::string> specialnames;
+	int glitchmode;
+	int glitchdelay;
+	std::string glitchname;
 
-    //This is the old colour cycle
-    int r, g,b;
-    int check, cmode;
-    int towercol;
-    int colstate, colstatedelay;
-    int colsuperstate;
-    int spikeleveltop, spikelevelbottom;
-    bool tdrawback;
-    int bscroll;
-    //final level navigation
-    int finalx;
-    int finaly;
-    bool finalmode;
-    bool finalstretch;
+	//final level colour cycling stuff
+	bool final_colormode;
+	int final_mapcol;
+	int final_aniframe;
+	int final_aniframedelay;
+	int final_colorframe, final_colorframedelay;
 
-    //Variables for playing custom levels
-    bool custommode;
-    bool custommodeforreal;
-    int customx, customy;
-    int customwidth, customheight;
-    int customtrinkets;
-    int customcrewmates;
-    int custommmxoff, custommmyoff, custommmxsize, custommmysize;
-    int customzoom;
-    bool customshowmm;
+	//Teleporters and Trinkets on the map
+	std::vector<point> teleporters;
+	std::vector<point> shinytrinkets;
 
-    std::vector<std::string> specialnames;
-    int glitchmode;
-    int glitchdelay;
-    std::string glitchname;
+	int numteleporters, numshinytrinkets;
+	bool showteleporters, showtargets, showtrinkets;
 
-    //final level colour cycling stuff
-    bool final_colormode;
-    int final_mapcol;
-    int final_aniframe;
-    int final_aniframedelay;
-    int final_colorframe, final_colorframedelay;
+	//Roomtext
+	int roomtextx[100], roomtexty[100];
+	bool roomtexton;
+	std::vector<std::string> roomtext;
+	int roomtextnumlines;
 
-    //Teleporters and Trinkets on the map
-    std::vector<point> teleporters;
-    std::vector<point> shinytrinkets;
+	//Levels
+	otherlevelclass otherlevel;
+	spacestation2class spacestation2;
+	labclass lablevel;
+	finalclass finallevel;
+	warpclass warplevel;
+	towerclass tower;
+	int extrarow;
 
-    int numteleporters, numshinytrinkets;
-    bool showteleporters, showtargets, showtrinkets;
+	//Accessibility options
+	bool invincibility;
 
-    //Roomtext
-    int roomtextx[100], roomtexty[100];
-    bool roomtexton;
-    std::vector<std::string> roomtext;
-    int roomtextnumlines;
-
-    //Levels
-    otherlevelclass otherlevel;
-    spacestation2class spacestation2;
-    labclass lablevel;
-    finalclass finallevel;
-    warpclass warplevel;
-    towerclass tower;
-    int extrarow;
-
-    //Accessibility options
-    bool invincibility;
-
-    //Map cursor
-    int cursorstate, cursordelay;
+	//Map cursor
+	int cursorstate, cursordelay;
 };
-
-

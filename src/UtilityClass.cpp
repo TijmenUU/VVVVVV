@@ -5,49 +5,49 @@
 #include <sstream>
 
 /* Used by UtilityClass::GCString to generate a button list */
-const char *GCChar(SDL_GameControllerButton button)
+const char * GCChar(SDL_GameControllerButton button)
 {
-	if (button == SDL_CONTROLLER_BUTTON_A)
+	if(button == SDL_CONTROLLER_BUTTON_A)
 	{
 		return "A";
 	}
-	else if (button == SDL_CONTROLLER_BUTTON_B)
+	else if(button == SDL_CONTROLLER_BUTTON_B)
 	{
 		return "B";
 	}
-	else if (button == SDL_CONTROLLER_BUTTON_X)
+	else if(button == SDL_CONTROLLER_BUTTON_X)
 	{
 		return "X";
 	}
-	else if (button == SDL_CONTROLLER_BUTTON_Y)
+	else if(button == SDL_CONTROLLER_BUTTON_Y)
 	{
 		return "Y";
 	}
-	else if (button == SDL_CONTROLLER_BUTTON_BACK)
+	else if(button == SDL_CONTROLLER_BUTTON_BACK)
 	{
 		return "BACK";
 	}
-	else if (button == SDL_CONTROLLER_BUTTON_GUIDE)
+	else if(button == SDL_CONTROLLER_BUTTON_GUIDE)
 	{
 		return "GUIDE";
 	}
-	else if (button == SDL_CONTROLLER_BUTTON_START)
+	else if(button == SDL_CONTROLLER_BUTTON_START)
 	{
 		return "START";
 	}
-	else if (button == SDL_CONTROLLER_BUTTON_LEFTSTICK)
+	else if(button == SDL_CONTROLLER_BUTTON_LEFTSTICK)
 	{
 		return "L3";
 	}
-	else if (button == SDL_CONTROLLER_BUTTON_RIGHTSTICK)
+	else if(button == SDL_CONTROLLER_BUTTON_RIGHTSTICK)
 	{
 		return "R3";
 	}
-	else if (button == SDL_CONTROLLER_BUTTON_LEFTSHOULDER)
+	else if(button == SDL_CONTROLLER_BUTTON_LEFTSHOULDER)
 	{
 		return "LB";
 	}
-	else if (button == SDL_CONTROLLER_BUTTON_RIGHTSHOULDER)
+	else if(button == SDL_CONTROLLER_BUTTON_RIGHTSHOULDER)
 	{
 		return "RB";
 	}
@@ -55,7 +55,7 @@ const char *GCChar(SDL_GameControllerButton button)
 	return NULL;
 }
 
-int ss_toi( std::string _s )
+int ss_toi(std::string _s)
 {
 	std::istringstream i(_s);
 	int x;
@@ -63,7 +63,7 @@ int ss_toi( std::string _s )
 	return x;
 }
 
-std::vector<std::string> split( const std::string &s, char delim, std::vector<std::string> &elems )
+std::vector<std::string> split(const std::string & s, char delim, std::vector<std::string> & elems)
 {
 	std::stringstream ss(s);
 	std::string item;
@@ -74,17 +74,15 @@ std::vector<std::string> split( const std::string &s, char delim, std::vector<st
 	return elems;
 }
 
-std::vector<std::string> split( const std::string &s, char delim )
+std::vector<std::string> split(const std::string & s, char delim)
 {
 	std::vector<std::string> elems;
 	return split(s, delim, elems);
 }
 
-UtilityClass::UtilityClass() :
-glow(0),
-	glowdir(0)
+UtilityClass::UtilityClass() : glow(0), glowdir(0)
 {
-	for (int i = 0; i < 30; i++)
+	for(int i = 0; i < 30; i++)
 	{
 		splitseconds.push_back(int((i * 100) / 30));
 	}
@@ -92,20 +90,20 @@ glow(0),
 	slowsine = 0;
 }
 
-std::string UtilityClass::String( int _v )
+std::string UtilityClass::String(int _v)
 {
 	std::ostringstream os;
 	os << _v;
-	return(os.str());
+	return (os.str());
 }
 
 std::string UtilityClass::GCString(std::vector<SDL_GameControllerButton> buttons)
 {
 	std::string retval = "";
-	for (size_t i = 0; i < buttons.size(); i += 1)
+	for(size_t i = 0; i < buttons.size(); i += 1)
 	{
 		retval += GCChar(buttons[i]);
-		if ((i + 1) < buttons.size())
+		if((i + 1) < buttons.size())
 		{
 			retval += ",";
 		}
@@ -113,25 +111,25 @@ std::string UtilityClass::GCString(std::vector<SDL_GameControllerButton> buttons
 	return retval;
 }
 
-std::string UtilityClass::twodigits( int t )
+std::string UtilityClass::twodigits(int t)
 {
-	if (t < 10)
+	if(t < 10)
 	{
 		return "0" + String(t);
 	}
-	if (t >= 100)
+	if(t >= 100)
 	{
 		return "??";
 	}
 	return String(t);
 }
 
-std::string UtilityClass::timestring( int t )
+std::string UtilityClass::timestring(int t)
 {
 	//given a time t in frames, return a time in seconds
 	tempstring = "";
 	temp = (t - (t % 30)) / 30;
-	if (temp < 60)   //less than one minute
+	if(temp < 60) //less than one minute
 	{
 		t = t % 30;
 		tempstring = String(temp) + ":" + twodigits(splitseconds[t]);
@@ -146,168 +144,168 @@ std::string UtilityClass::timestring( int t )
 	return tempstring;
 }
 
-std::string UtilityClass::number( int _t )
+std::string UtilityClass::number(int _t)
 {
 	switch(_t)
 	{
-	case 0:
-		return "Zero";
-		break;
-	case 1:
-		return "One";
-		break;
-	case 2:
-		return "Two";
-		break;
-	case 3:
-		return "Three";
-		break;
-	case 4:
-		return "Four";
-		break;
-	case 5:
-		return "Five";
-		break;
-	case 6:
-		return "Six";
-		break;
-	case 7:
-		return "Seven";
-		break;
-	case 8:
-		return "Eight";
-		break;
-	case 9:
-		return "Nine";
-		break;
-	case 10:
-		return "Ten";
-		break;
-	case 11:
-		return "Eleven";
-		break;
-	case 12:
-		return "Twelve";
-		break;
-	case 13:
-		return "Thirteen";
-		break;
-	case 14:
-		return "Fourteen";
-		break;
-	case 15:
-		return "Fifteen";
-		break;
-	case 16:
-		return "Sixteen";
-		break;
-	case 17:
-		return "Seventeen";
-		break;
-	case 18:
-		return "Eighteen";
-		break;
-	case 19:
-		return "Nineteen";
-		break;
-	case 20:
-		return "Twenty";
-		break;
-	case 21:
-		return "Twenty One";
-		break;
-	case 22:
-		return "Twenty Two";
-		break;
-	case 23:
-		return "Twenty Three";
-		break;
-	case 24:
-		return "Twenty Four";
-		break;
-	case 25:
-		return "Twenty Five";
-		break;
-	case 26:
-		return "Twenty Six";
-		break;
-	case 27:
-		return "Twenty Seven";
-		break;
-	case 28:
-		return "Twenty Eight";
-		break;
-	case 29:
-		return "Twenty Nine";
-		break;
-	case 30:
-		return "Thirty";
-		break;
-  case 31:
-		return "Thirty One";
-		break;
-	case 32:
-		return "Thirty Two";
-		break;
-	case 33:
-		return "Thirty Three";
-		break;
-	case 34:
-		return "Thirty Four";
-		break;
-	case 35:
-		return "Thirty Five";
-		break;
-	case 36:
-		return "Thirty Six";
-		break;
-	case 37:
-		return "Thirty Seven";
-		break;
-	case 38:
-		return "Thirty Eight";
-		break;
-	case 39:
-		return "Thirty Nine";
-		break;
-	case 40:
-		return "Forty";
-		break;
-  case 41:
-		return "Forty One";
-		break;
-	case 42:
-		return "Forty Two";
-		break;
-	case 43:
-		return "Forty Three";
-		break;
-	case 44:
-		return "Forty Four";
-		break;
-	case 45:
-		return "Forty Five";
-		break;
-	case 46:
-		return "Forty Six";
-		break;
-	case 47:
-		return "Forty Seven";
-		break;
-	case 48:
-		return "Forty Eight";
-		break;
-	case 49:
-		return "Forty Nine";
-		break;
-	case 50:
-		return "Fifty";
-		break;
+		case 0:
+			return "Zero";
+			break;
+		case 1:
+			return "One";
+			break;
+		case 2:
+			return "Two";
+			break;
+		case 3:
+			return "Three";
+			break;
+		case 4:
+			return "Four";
+			break;
+		case 5:
+			return "Five";
+			break;
+		case 6:
+			return "Six";
+			break;
+		case 7:
+			return "Seven";
+			break;
+		case 8:
+			return "Eight";
+			break;
+		case 9:
+			return "Nine";
+			break;
+		case 10:
+			return "Ten";
+			break;
+		case 11:
+			return "Eleven";
+			break;
+		case 12:
+			return "Twelve";
+			break;
+		case 13:
+			return "Thirteen";
+			break;
+		case 14:
+			return "Fourteen";
+			break;
+		case 15:
+			return "Fifteen";
+			break;
+		case 16:
+			return "Sixteen";
+			break;
+		case 17:
+			return "Seventeen";
+			break;
+		case 18:
+			return "Eighteen";
+			break;
+		case 19:
+			return "Nineteen";
+			break;
+		case 20:
+			return "Twenty";
+			break;
+		case 21:
+			return "Twenty One";
+			break;
+		case 22:
+			return "Twenty Two";
+			break;
+		case 23:
+			return "Twenty Three";
+			break;
+		case 24:
+			return "Twenty Four";
+			break;
+		case 25:
+			return "Twenty Five";
+			break;
+		case 26:
+			return "Twenty Six";
+			break;
+		case 27:
+			return "Twenty Seven";
+			break;
+		case 28:
+			return "Twenty Eight";
+			break;
+		case 29:
+			return "Twenty Nine";
+			break;
+		case 30:
+			return "Thirty";
+			break;
+		case 31:
+			return "Thirty One";
+			break;
+		case 32:
+			return "Thirty Two";
+			break;
+		case 33:
+			return "Thirty Three";
+			break;
+		case 34:
+			return "Thirty Four";
+			break;
+		case 35:
+			return "Thirty Five";
+			break;
+		case 36:
+			return "Thirty Six";
+			break;
+		case 37:
+			return "Thirty Seven";
+			break;
+		case 38:
+			return "Thirty Eight";
+			break;
+		case 39:
+			return "Thirty Nine";
+			break;
+		case 40:
+			return "Forty";
+			break;
+		case 41:
+			return "Forty One";
+			break;
+		case 42:
+			return "Forty Two";
+			break;
+		case 43:
+			return "Forty Three";
+			break;
+		case 44:
+			return "Forty Four";
+			break;
+		case 45:
+			return "Forty Five";
+			break;
+		case 46:
+			return "Forty Six";
+			break;
+		case 47:
+			return "Forty Seven";
+			break;
+		case 48:
+			return "Forty Eight";
+			break;
+		case 49:
+			return "Forty Nine";
+			break;
+		case 50:
+			return "Fifty";
+			break;
 	}
 	return "Lots";
 }
 
-bool UtilityClass::intersects( SDL_Rect A, SDL_Rect B )
+bool UtilityClass::intersects(SDL_Rect A, SDL_Rect B)
 {
 	int leftA, leftB;
 	int rightA, rightB;
@@ -324,19 +322,19 @@ bool UtilityClass::intersects( SDL_Rect A, SDL_Rect B )
 	topB = B.y;
 	bottomB = B.y + B.h;
 
-	if( bottomA <= topB )
+	if(bottomA <= topB)
 	{
 		return false;
 	}
-	if( topA >= bottomB )
+	if(topA >= bottomB)
 	{
 		return false;
 	}
-	if( rightA <= leftB )
+	if(rightA <= leftB)
 	{
 		return false;
 	}
-	if( leftA >= rightB )
+	if(leftA >= rightB)
 	{
 		return false;
 	}
@@ -348,13 +346,19 @@ bool UtilityClass::intersects( SDL_Rect A, SDL_Rect B )
 void UtilityClass::updateglow()
 {
 	slowsine++;
-	if (slowsine >= 64) slowsine = 0;
+	if(slowsine >= 64)
+		slowsine = 0;
 
-	if (glowdir == 0) {
-		glow+=2;
-		if (glow >= 62) glowdir = 1;
-	}else {
-		glow-=2;
-		if (glow < 2) glowdir = 0;
+	if(glowdir == 0)
+	{
+		glow += 2;
+		if(glow >= 62)
+			glowdir = 1;
+	}
+	else
+	{
+		glow -= 2;
+		if(glow < 2)
+			glowdir = 0;
 	}
 }

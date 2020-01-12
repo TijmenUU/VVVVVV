@@ -1,9 +1,6 @@
 #include <BlockV.hpp>
 
-blockclass::blockclass()
-{
-	clear();
-}
+blockclass::blockclass() { clear(); }
 
 void blockclass::clear()
 {

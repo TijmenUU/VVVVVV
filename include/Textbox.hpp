@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_rect.h>
 #include <string>
@@ -9,47 +8,45 @@
 class textboxclass
 {
 public:
-    textboxclass();
+	textboxclass();
 
-    void firstcreate();
+	void firstcreate();
 
-    void clear();
+	void clear();
 
-    void centerx();
+	void centerx();
 
-    void centery();
+	void centery();
 
-    void adjust();
+	void adjust();
 
-    void initcol(int rr, int gg, int bb);
+	void initcol(int rr, int gg, int bb);
 
-    void setcol(int rr, int gg, int bb);
+	void setcol(int rr, int gg, int bb);
 
-    void update();
+	void update();
 
-    void remove();
+	void remove();
 
-    void removefast();
+	void removefast();
 
-    void resize();
+	void resize();
 
-    void addline(std::string t);
+	void addline(std::string t);
+
 public:
-    //Fundamentals
-    std::vector<std::string> line;
-    int xp, yp, lw, w, h, numlines;
-    int x,y;
-    int r,g,b;
-    int tr,tg,tb;
-    SDL_Rect textrect;
-    bool active;
-    int timer;
+	//Fundamentals
+	std::vector<std::string> line;
+	int xp, yp, lw, w, h, numlines;
+	int x, y;
+	int r, g, b;
+	int tr, tg, tb;
+	SDL_Rect textrect;
+	bool active;
+	int timer;
 
-    float tl;
-    int tm;
+	float tl;
+	int tm;
 
-    int max;
-
+	int max;
 };
-
-

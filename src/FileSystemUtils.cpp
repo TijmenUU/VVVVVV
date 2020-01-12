@@ -1,7 +1,7 @@
 #include <FileSystemUtils.hpp>
 
-#include <vector>
 #include <string>
+#include <vector>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,33 +11,33 @@
 #include <stdexcept>
 
 #if defined(_WIN32)
-#include <windows.h>
-#include <shlobj.h>
-#define mkdir(a, b) CreateDirectory(a, NULL)
-#define VNEEDS_MIGRATION (mkdirResult != 0)
+#	include <shlobj.h>
+#	include <windows.h>
+#	define mkdir(a, b) CreateDirectory(a, NULL)
+#	define VNEEDS_MIGRATION (mkdirResult != 0)
 #elif defined(__linux__) || defined(__APPLE__)
-#include <sys/stat.h>
-#include <limits.h>
-#define VNEEDS_MIGRATION (mkdirResult == 0)
+#	include <limits.h>
+#	include <sys/stat.h>
+#	define VNEEDS_MIGRATION (mkdirResult == 0)
 /* These are needed for PLATFORM_* crap */
-#include <unistd.h>
-#include <dirent.h>
-#define MAX_PATH PATH_MAX
+#	include <dirent.h>
+#	include <unistd.h>
+#	define MAX_PATH PATH_MAX
 #endif
 
 char saveDir[MAX_PATH];
 char levelDir[MAX_PATH];
 
-void PLATFORM_getOSDirectory(char* output);
-void PLATFORM_migrateSaveData(char* output);
-void PLATFORM_copyFile(const char *oldLocation, const char *newLocation);
+void PLATFORM_getOSDirectory(char * output);
+void PLATFORM_migrateSaveData(char * output);
+void PLATFORM_copyFile(const char * oldLocation, const char * newLocation);
 
-void FILESYSTEM_init(char *argvZero)
+void FILESYSTEM_init(char * argvZero)
 {
 	char output[MAX_PATH];
 	int mkdirResult;
 
-	if (PHYSFS_init(argvZero) == 0)
+	if(PHYSFS_init(argvZero) == 0)
 	{
 		std::printf("FILESYSTEM_init: Error %i when initializing PhysFS\n", PHYSFS_getLastErrorCode());
 		throw std::runtime_error("Failed to initialize PhysFS, aborting");
@@ -50,9 +50,11 @@ void FILESYSTEM_init(char *argvZero)
 	mkdirResult = mkdir(output, 0777);
 
 	/* Mount our base user directory */
-	if (PHYSFS_mount(output, NULL, 1) == 0)
+	if(PHYSFS_mount(output, NULL, 1) == 0)
 	{
-		std::printf("FILESYSTEM_init: Error %i when mounting base user directory %s\n", PHYSFS_getLastErrorCode(), output);
+		std::printf("FILESYSTEM_init: Error %i when mounting base user directory %s\n",
+		 PHYSFS_getLastErrorCode(),
+		 output);
 		throw std::runtime_error("Failed to mount base user directory, aborting");
 	}
 	printf("FILESYSTEM_init: Base directory: %s\n", output);
@@ -72,7 +74,7 @@ void FILESYSTEM_init(char *argvZero)
 	printf("FILESYSTEM_init: Level directory: %s\n", levelDir);
 
 	/* We didn't exist until now, migrate files! */
-	if (VNEEDS_MIGRATION)
+	if(VNEEDS_MIGRATION)
 	{
 		PLATFORM_migrateSaveData(output);
 	}
@@ -85,46 +87,39 @@ void FILESYSTEM_init(char *argvZero)
 	strcpy(output, "data.zip");
 #endif
 	std::printf("FILESYSTEM_init: Loading stock content from %s\n", output);
-	if (PHYSFS_mount(output, NULL, 1) == 0)
+	if(PHYSFS_mount(output, NULL, 1) == 0)
 	{
 		std::printf("FILESYSTEM_init: Error %i mounting PhysFS on %s\n", PHYSFS_getLastErrorCode(), output);
 		throw std::runtime_error("Failed to mount PhysFS, aborting");
 	}
 }
 
-void FILESYSTEM_deinit()
-{
-	PHYSFS_deinit();
-}
+void FILESYSTEM_deinit() { PHYSFS_deinit(); }
 
-char *FILESYSTEM_getUserSaveDirectory()
-{
-	return saveDir;
-}
+char * FILESYSTEM_getUserSaveDirectory() { return saveDir; }
 
-char *FILESYSTEM_getUserLevelDirectory()
-{
-	return levelDir;
-}
+char * FILESYSTEM_getUserLevelDirectory() { return levelDir; }
 
-bool FILESYSTEM_loadFileToMemory(const char *name, unsigned char **mem, size_t *len)
+bool FILESYSTEM_loadFileToMemory(const char * name, unsigned char ** mem, size_t * len)
 {
-	PHYSFS_File *handle = PHYSFS_openRead(name);
-	if (handle == NULL)
+	PHYSFS_File * handle = PHYSFS_openRead(name);
+	if(handle == NULL)
 	{
 		std::printf("FILESYSTEM_loadFileToMemory: Error <%i> when loading <%s>\n", PHYSFS_getLastErrorCode(), name);
 		return false;
 	}
 
 	PHYSFS_uint32 length = PHYSFS_fileLength(handle);
-	if (len != NULL)
+	if(len != NULL)
 	{
 		*len = length;
 	}
-	*mem = (unsigned char*) malloc(length);
-	if (PHYSFS_readBytes(handle, *mem, length) < 0)
+	*mem = (unsigned char *)malloc(length);
+	if(PHYSFS_readBytes(handle, *mem, length) < 0)
 	{
-		std::printf("FILESYSTEM_loadFileToMemory: Error <%i> reading bytes from <%s>\n", PHYSFS_getLastErrorCode(), name);
+		std::printf("FILESYSTEM_loadFileToMemory: Error <%i> reading bytes from <%s>\n",
+		 PHYSFS_getLastErrorCode(),
+		 name);
 		return false;
 	}
 
@@ -132,7 +127,7 @@ bool FILESYSTEM_loadFileToMemory(const char *name, unsigned char **mem, size_t *
 	return true;
 }
 
-void FILESYSTEM_freeMemory(unsigned char **mem)
+void FILESYSTEM_freeMemory(unsigned char ** mem)
 {
 	free(*mem);
 	*mem = NULL;
@@ -141,13 +136,13 @@ void FILESYSTEM_freeMemory(unsigned char **mem)
 std::vector<std::string> FILESYSTEM_getLevelDirFileNames()
 {
 	std::vector<std::string> list;
-	char **fileList = PHYSFS_enumerateFiles("/levels");
-	char **i;
+	char ** fileList = PHYSFS_enumerateFiles("/levels");
+	char ** i;
 	std::string builtLocation;
 
-	for (i = fileList; *i != NULL; i++)
+	for(i = fileList; *i != NULL; i++)
 	{
-		if (strcmp(*i, "data") == 0)
+		if(strcmp(*i, "data") == 0)
 		{
 			continue; /* FIXME: lolwut -flibit */
 		}
@@ -161,7 +156,7 @@ std::vector<std::string> FILESYSTEM_getLevelDirFileNames()
 	return list;
 }
 
-void PLATFORM_getOSDirectory(char* output)
+void PLATFORM_getOSDirectory(char * output)
 {
 #if defined(__linux__) || defined(__APPLE__)
 	strcpy(output, PHYSFS_getPrefDir("distractionware", "VVVVVV"));
@@ -169,63 +164,62 @@ void PLATFORM_getOSDirectory(char* output)
 	SHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, output);
 	strcat(output, "\\VVVVVV\\");
 #else
-#error See PLATFORM_getOSDirectory
+#	error See PLATFORM_getOSDirectory
 #endif
 }
 
-void PLATFORM_migrateSaveData(char* output)
+void PLATFORM_migrateSaveData(char * output)
 {
 	char oldLocation[MAX_PATH];
 	char newLocation[MAX_PATH];
 	char oldDirectory[MAX_PATH];
 #if defined(__linux__) || defined(__APPLE__)
-	DIR *dir = NULL;
-	struct dirent *de = NULL;
-	DIR *subDir = NULL;
-	struct dirent *subDe = NULL;
+	DIR * dir = NULL;
+	struct dirent * de = NULL;
+	DIR * subDir = NULL;
+	struct dirent * subDe = NULL;
 	char subDirLocation[MAX_PATH];
-	const char *homeDir = getenv("HOME");
-	if (homeDir == NULL)
+	const char * homeDir = getenv("HOME");
+	if(homeDir == NULL)
 	{
 		/* Uhh, I don't want to get near this. -flibit */
 		return;
 	}
 	strcpy(oldDirectory, homeDir);
-#if defined(__linux__)
+#	if defined(__linux__)
 	strcat(oldDirectory, "/.vvvvvv/");
-#elif defined(__APPLE__)
+#	elif defined(__APPLE__)
 	strcat(oldDirectory, "/Documents/VVVVVV/");
-#endif
+#	endif
 	dir = opendir(oldDirectory);
-	if (!dir)
+	if(!dir)
 	{
 		printf("Could not find directory %s\n", oldDirectory);
 		return;
 	}
 
 	printf("Migrating old savedata to new location...\n");
-	for (de = readdir(dir); de != NULL; de = readdir(dir))
+	for(de = readdir(dir); de != NULL; de = readdir(dir))
 	{
-		if (	strcmp(de->d_name, "..") == 0 ||
-			strcmp(de->d_name, ".") == 0	)
+		if(strcmp(de->d_name, "..") == 0 || strcmp(de->d_name, ".") == 0)
 		{
 			continue;
 		}
-		#define COPY_SAVEFILE(name) \
-			else if (strcmp(de->d_name, name) == 0) \
-			{ \
-				strcpy(oldLocation, oldDirectory); \
-				strcat(oldLocation, name); \
-				strcpy(newLocation, output); \
-				strcat(newLocation, "saves/"); \
-				strcat(newLocation, name); \
-				PLATFORM_copyFile(oldLocation, newLocation); \
-			}
+#	define COPY_SAVEFILE(name) \
+		else if(strcmp(de->d_name, name) == 0) \
+		{ \
+			strcpy(oldLocation, oldDirectory); \
+			strcat(oldLocation, name); \
+			strcpy(newLocation, output); \
+			strcat(newLocation, "saves/"); \
+			strcat(newLocation, name); \
+			PLATFORM_copyFile(oldLocation, newLocation); \
+		}
 		COPY_SAVEFILE("unlock.vvv")
 		COPY_SAVEFILE("tsave.vvv")
 		COPY_SAVEFILE("qsave.vvv")
-		#undef COPY_SAVEFILE
-		else if (strstr(de->d_name, ".vvvvvv.vvv") != NULL)
+#	undef COPY_SAVEFILE
+		else if(strstr(de->d_name, ".vvvvvv.vvv") != NULL)
 		{
 			strcpy(oldLocation, oldDirectory);
 			strcat(oldLocation, de->d_name);
@@ -234,7 +228,7 @@ void PLATFORM_migrateSaveData(char* output)
 			strcat(newLocation, de->d_name);
 			PLATFORM_copyFile(oldLocation, newLocation);
 		}
-		else if (strstr(de->d_name, ".vvvvvv") != NULL)
+		else if(strstr(de->d_name, ".vvvvvv") != NULL)
 		{
 			strcpy(oldLocation, oldDirectory);
 			strcat(oldLocation, de->d_name);
@@ -243,35 +237,35 @@ void PLATFORM_migrateSaveData(char* output)
 			strcat(newLocation, de->d_name);
 			PLATFORM_copyFile(oldLocation, newLocation);
 		}
-		else if (strcmp(de->d_name, "Saves") == 0)
+		else if(strcmp(de->d_name, "Saves") == 0)
 		{
 			strcpy(subDirLocation, oldDirectory);
 			strcat(subDirLocation, "Saves/");
 			subDir = opendir(subDirLocation);
-			if (!subDir)
+			if(!subDir)
 			{
 				printf("Could not open Saves/ subdir!\n");
 				continue;
 			}
-			for (
-				subDe = readdir(subDir);
-				subDe != NULL;
-				subDe = readdir(subDir)
-			) {
-				#define COPY_SAVEFILE(name) \
-					(strcmp(subDe->d_name, name) == 0) \
-					{ \
-						strcpy(oldLocation, subDirLocation); \
-						strcat(oldLocation, name); \
-						strcpy(newLocation, output); \
-						strcat(newLocation, "saves/"); \
-						strcat(newLocation, name); \
-						PLATFORM_copyFile(oldLocation, newLocation); \
-					}
-				if COPY_SAVEFILE("unlock.vvv")
-				else if COPY_SAVEFILE("tsave.vvv")
-				else if COPY_SAVEFILE("qsave.vvv")
-				#undef COPY_SAVEFILE
+			for(subDe = readdir(subDir); subDe != NULL; subDe = readdir(subDir))
+			{
+#	define COPY_SAVEFILE(name) \
+		(strcmp(subDe->d_name, name) == 0) \
+		{ \
+			strcpy(oldLocation, subDirLocation); \
+			strcat(oldLocation, name); \
+			strcpy(newLocation, output); \
+			strcat(newLocation, "saves/"); \
+			strcat(newLocation, name); \
+			PLATFORM_copyFile(oldLocation, newLocation); \
+		}
+				if
+					COPY_SAVEFILE("unlock.vvv")
+				else if
+					COPY_SAVEFILE("tsave.vvv")
+				else if
+					COPY_SAVEFILE("qsave.vvv")
+#	undef COPY_SAVEFILE
 			}
 		}
 	}
@@ -315,35 +309,36 @@ void PLATFORM_migrateSaveData(char* output)
 
 	sprintf(fileSearch, "%s\\*.vvvvvv", oldDirectory);
 	hFind = FindFirstFile(fileSearch, &findHandle);
-	if (hFind == INVALID_HANDLE_VALUE)
+	if(hFind == INVALID_HANDLE_VALUE)
 	{
 		printf("Could not find directory %s\n", oldDirectory);
 	}
-	else do
-	{
-		if ((findHandle.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) == 0)
+	else
+		do
 		{
-			strcpy(oldLocation, oldDirectory);
-			strcat(oldLocation, findHandle.cFileName);
-			strcpy(newLocation, output);
-			strcat(newLocation, "levels\\");
-			strcat(newLocation, findHandle.cFileName);
-			PLATFORM_copyFile(oldLocation, newLocation);
-		}
-	} while (FindNextFile(hFind, &findHandle));
+			if((findHandle.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) == 0)
+			{
+				strcpy(oldLocation, oldDirectory);
+				strcat(oldLocation, findHandle.cFileName);
+				strcpy(newLocation, output);
+				strcat(newLocation, "levels\\");
+				strcat(newLocation, findHandle.cFileName);
+				PLATFORM_copyFile(oldLocation, newLocation);
+			}
+		} while(FindNextFile(hFind, &findHandle));
 #else
-#error See PLATFORM_migrateSaveData
+#	error See PLATFORM_migrateSaveData
 #endif
 }
 
-void PLATFORM_copyFile(const char *oldLocation, const char *newLocation)
+void PLATFORM_copyFile(const char * oldLocation, const char * newLocation)
 {
-	char *data;
+	char * data;
 	long int length;
 
 	/* Read data */
-	FILE *file = fopen(oldLocation, "rb");
-	if (!file)
+	FILE * file = fopen(oldLocation, "rb");
+	if(!file)
 	{
 		printf("Cannot open/copy %s\n", oldLocation);
 		return;
@@ -351,13 +346,13 @@ void PLATFORM_copyFile(const char *oldLocation, const char *newLocation)
 	fseek(file, 0, SEEK_END);
 	length = ftell(file);
 	fseek(file, 0, SEEK_SET);
-	data = (char*) malloc(length);
+	data = (char *)malloc(length);
 	fread(data, 1, length, file);
 	fclose(file);
 
 	/* Write data */
 	file = fopen(newLocation, "wb");
-	if (!file)
+	if(!file)
 	{
 		printf("Could not write to %s\n", newLocation);
 		free(data);

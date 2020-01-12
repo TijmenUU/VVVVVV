@@ -1,51 +1,44 @@
 #pragma once
 
-
 #include <string>
 #include <vector>
 
 class towerclass
 {
 public:
-    towerclass();
+	towerclass();
 
-    int backat(int xp, int yp, int yoff);
+	int backat(int xp, int yp, int yoff);
 
-    int at(int xp, int yp, int yoff);
+	int at(int xp, int yp, int yoff);
 
-    int miniat(int xp, int yp, int yoff);
+	int miniat(int xp, int yp, int yoff);
 
-    void fillbackground(std::vector<std::string>& tmap);
+	void fillbackground(std::vector<std::string> & tmap);
 
-    void fillminitower(std::vector<std::string>& tmap);
+	void fillminitower(std::vector<std::string> & tmap);
 
-    void loadminitower1();
+	void loadminitower1();
 
-    void loadminitower2();
+	void loadminitower2();
 
-    void loadbackground();
+	void loadbackground();
 
-    void fillcontents(std::vector<std::string>& tmap);
+	void fillcontents(std::vector<std::string> & tmap);
 
-    void loadmap();
+	void loadmap();
 
-    //public var back:Array = new Array();
-    //public var contents:Array = new Array();
-    //public var minitower:Array = new Array();
-    //public var vmult:Array = new Array();
+	//public var back:Array = new Array();
+	//public var contents:Array = new Array();
+	//public var minitower:Array = new Array();
+	//public var vmult:Array = new Array();
 
-    std::vector<int> back;
-    std::vector<int> contents;
-    std::vector<int> minitower;
-    std::vector<int> vmult;
+	std::vector<int> back;
+	std::vector<int> contents;
+	std::vector<int> minitower;
+	std::vector<int> vmult;
 
-    bool minitowermode;
-    int i;
-    int k;
+	bool minitowermode;
+	int i;
+	int k;
 };
-
-
-
-
-
-

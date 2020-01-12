@@ -1,32 +1,29 @@
 #pragma once
 
-
-#include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_rect.h>
 #include <string>
 
 class blockclass
 {
 public:
-    blockclass();
+	blockclass();
 
-    void clear();
+	void clear();
 
-    void rectset(const int xi, const int yi, const int wi, const int hi);
+	void rectset(const int xi, const int yi, const int wi, const int hi);
+
 public:
-    //Fundamentals
-    bool active;
-    SDL_Rect rect;
-    int type;
-    int trigger;
-    int xp, yp, wp, hp;
-    std::string script, prompt;
-    int r, g, b;
+	//Fundamentals
+	bool active;
+	SDL_Rect rect;
+	int type;
+	int trigger;
+	int xp, yp, wp, hp;
+	std::string script, prompt;
+	int r, g, b;
 
-    //These would come from the sprite in the flash
-    float x;
-    float y;
-
+	//These would come from the sprite in the flash
+	float x;
+	float y;
 };
-
-

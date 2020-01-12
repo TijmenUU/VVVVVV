@@ -1,10 +1,7 @@
 #pragma once
 
-
-#include <Graphics.hpp>
 #include <Game.hpp>
+#include <Graphics.hpp>
 #include <UtilityClass.hpp>
 
-void preloaderrender(Graphics& dwgfx, Game& game, UtilityClass& help);
-
-
+void preloaderrender(Graphics & dwgfx, Game & game, UtilityClass & help);

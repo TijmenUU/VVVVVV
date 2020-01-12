@@ -1,8 +1,8 @@
 #include <Network.hpp>
 
-#include <stdio.h>
-#include <stdint.h>
 #include <SDL2/SDL.h>
+#include <stdint.h>
+#include <stdio.h>
 
 /* Steamworks interface versions */
 
@@ -12,13 +12,13 @@
 /* Shared object file name */
 
 #if defined(_WIN32)
-#define NETWORK_LIBRARY "steam_api.dll"
+#	define NETWORK_LIBRARY "steam_api.dll"
 #elif defined(__APPLE__)
-#define NETWORK_LIBRARY "libsteam_api.dylib"
+#	define NETWORK_LIBRARY "libsteam_api.dylib"
 #elif defined(__linux__)
-#define NETWORK_LIBRARY "libsteam_api.so"
+#	define NETWORK_LIBRARY "libsteam_api.so"
 #else
-#error NETWORK_LIBRARY: Unrecognized platform!
+#	error NETWORK_LIBRARY: Unrecognized platform!
 #endif
 
 /* Function Pointer Types */
@@ -26,36 +26,20 @@
 typedef uint8_t (*SteamAPI_InitFunc)();
 typedef void (*SteamAPI_ShutdownFunc)();
 typedef void (*SteamAPI_RunCallbacksFunc)();
-typedef intptr_t (*SteamInternal_CreateInterfaceFunc)(const char*);
+typedef intptr_t (*SteamInternal_CreateInterfaceFunc)(const char *);
 typedef int32_t (*SteamAPI_GetHSteamUserFunc)();
 typedef int32_t (*SteamAPI_GetHSteamPipeFunc)();
-typedef intptr_t (*SteamAPI_ISteamClient_GetISteamUserStatsFunc)(
-	intptr_t,
-	int32_t,
-	int32_t,
-	const char*
-);
+typedef intptr_t (*SteamAPI_ISteamClient_GetISteamUserStatsFunc)(intptr_t, int32_t, int32_t, const char *);
 typedef uint8_t (*SteamAPI_ISteamUserStats_RequestCurrentStatsFunc)(intptr_t);
 typedef uint8_t (*SteamAPI_ISteamUserStats_StoreStatsFunc)(intptr_t);
-typedef uint8_t (*SteamAPI_ISteamUserStats_GetStatFunc)(
-	intptr_t,
-	const char*,
-	int32_t*
-);
-typedef uint8_t (*SteamAPI_ISteamUserStats_SetStatFunc)(
-	intptr_t,
-	const char*,
-	int32_t
-);
-typedef uint8_t (*SteamAPI_ISteamUserStats_SetAchievementFunc)(
-	intptr_t,
-	const char*
-);
+typedef uint8_t (*SteamAPI_ISteamUserStats_GetStatFunc)(intptr_t, const char *, int32_t *);
+typedef uint8_t (*SteamAPI_ISteamUserStats_SetStatFunc)(intptr_t, const char *, int32_t);
+typedef uint8_t (*SteamAPI_ISteamUserStats_SetAchievementFunc)(intptr_t, const char *);
 
 /* DLL, Entry Points */
 
-static void *libHandle = NULL;
-static intptr_t steamUserStats = (intptr_t) NULL;
+static void * libHandle = NULL;
+static intptr_t steamUserStats = (intptr_t)NULL;
 
 #define DEFINE_FUNC(name) static name##Func name = NULL;
 DEFINE_FUNC(SteamAPI_Init)
@@ -78,7 +62,7 @@ static void ClearPointers()
 {
 	SDL_UnloadObject(libHandle);
 	libHandle = NULL;
-	steamUserStats = (intptr_t) NULL;
+	steamUserStats = (intptr_t)NULL;
 	SteamAPI_Init = NULL;
 	SteamAPI_Shutdown = NULL;
 	SteamAPI_RunCallbacks = NULL;
@@ -101,20 +85,20 @@ int NETWORK_init()
 	int32_t steamUser, steamPipe;
 
 	libHandle = SDL_LoadObject(NETWORK_LIBRARY);
-	if (!libHandle)
+	if(!libHandle)
 	{
 		printf("%s not found!\n", NETWORK_LIBRARY);
 		return 0;
 	}
 
-	#define LOAD_FUNC(name) \
-		name = (name##Func) SDL_LoadFunction(libHandle, #name); \
-		if (!name) \
-		{ \
-			printf("%s symbol %s not found!\n", NETWORK_LIBRARY, #name); \
-			ClearPointers(); \
-			return 0; \
-		}
+#define LOAD_FUNC(name) \
+	name = (name##Func)SDL_LoadFunction(libHandle, #name); \
+	if(!name) \
+	{ \
+		printf("%s symbol %s not found!\n", NETWORK_LIBRARY, #name); \
+		ClearPointers(); \
+		return 0; \
+	}
 	LOAD_FUNC(SteamAPI_Init)
 	LOAD_FUNC(SteamAPI_Shutdown)
 	LOAD_FUNC(SteamAPI_RunCallbacks)
@@ -127,9 +111,9 @@ int NETWORK_init()
 	LOAD_FUNC(SteamAPI_ISteamUserStats_GetStat)
 	LOAD_FUNC(SteamAPI_ISteamUserStats_SetStat)
 	LOAD_FUNC(SteamAPI_ISteamUserStats_SetAchievement)
-	#undef LOAD_FUNC
+#undef LOAD_FUNC
 
-	if (!SteamAPI_Init())
+	if(!SteamAPI_Init())
 	{
 		printf("Steamworks not initialized!\n");
 		ClearPointers();
@@ -138,20 +122,15 @@ int NETWORK_init()
 	steamClient = SteamInternal_CreateInterface(VVVVVV_STEAMCLIENT);
 	steamUser = SteamAPI_GetHSteamUser();
 	steamPipe = SteamAPI_GetHSteamPipe();
-	if (!steamClient || !steamUser || !steamPipe)
+	if(!steamClient || !steamUser || !steamPipe)
 	{
 		SteamAPI_Shutdown();
 		printf(VVVVVV_STEAMCLIENT " not created!\n");
 		ClearPointers();
 		return 0;
 	}
-	steamUserStats = SteamAPI_ISteamClient_GetISteamUserStats(
-		steamClient,
-		steamUser,
-		steamPipe,
-		VVVVVV_STEAMUSERSTATS
-	);
-	if (!steamUserStats)
+	steamUserStats = SteamAPI_ISteamClient_GetISteamUserStats(steamClient, steamUser, steamPipe, VVVVVV_STEAMUSERSTATS);
+	if(!steamUserStats)
 	{
 		SteamAPI_Shutdown();
 		printf(VVVVVV_STEAMUSERSTATS " not created!\n");
@@ -164,7 +143,7 @@ int NETWORK_init()
 
 void NETWORK_shutdown()
 {
-	if (libHandle)
+	if(libHandle)
 	{
 		SteamAPI_Shutdown();
 		ClearPointers();
@@ -173,47 +152,36 @@ void NETWORK_shutdown()
 
 void NETWORK_update()
 {
-	if (libHandle)
+	if(libHandle)
 	{
 		SteamAPI_RunCallbacks();
 	}
 }
 
-void NETWORK_unlockAchievement(const char *name)
+void NETWORK_unlockAchievement(const char * name)
 {
-	if (libHandle)
+	if(libHandle)
 	{
-		SteamAPI_ISteamUserStats_SetAchievement(
-			steamUserStats,
-			name
-		);
+		SteamAPI_ISteamUserStats_SetAchievement(steamUserStats, name);
 		SteamAPI_ISteamUserStats_StoreStats(steamUserStats);
 	}
 }
 
-int32_t NETWORK_getAchievementProgress(const char *name)
+int32_t NETWORK_getAchievementProgress(const char * name)
 {
 	int32_t result = -1;
-	if (libHandle)
+	if(libHandle)
 	{
-		SteamAPI_ISteamUserStats_GetStat(
-			steamUserStats,
-			name,
-			&result
-		);
+		SteamAPI_ISteamUserStats_GetStat(steamUserStats, name, &result);
 	}
 	return result;
 }
 
-void NETWORK_setAchievementProgress(const char *name, int32_t stat)
+void NETWORK_setAchievementProgress(const char * name, int32_t stat)
 {
-	if (libHandle)
+	if(libHandle)
 	{
-		SteamAPI_ISteamUserStats_SetStat(
-			steamUserStats,
-			name,
-			stat
-		);
+		SteamAPI_ISteamUserStats_SetStat(steamUserStats, name, stat);
 		SteamAPI_ISteamUserStats_StoreStats(steamUserStats);
 	}
 }

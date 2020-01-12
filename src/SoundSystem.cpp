@@ -1,20 +1,21 @@
+#include <FileSystemUtils.hpp>
 #include <SDL2/SDL.h>
 #include <SoundSystem.hpp>
-#include <FileSystemUtils.hpp>
 #include <stdexcept>
 
-MusicTrack::MusicTrack(const char* fileName)
+MusicTrack::MusicTrack(const char * fileName)
 {
 	m_music = Mix_LoadMUS(fileName);
 	m_isValid = true;
 	if(m_music == NULL)
 	{
-		fprintf(stderr, "Unable to load Ogg Music file: %s\n", Mix_GetError());;
+		fprintf(stderr, "Unable to load Ogg Music file: %s\n", Mix_GetError());
+		;
 		m_isValid = false;
 	}
 }
 
-MusicTrack::MusicTrack(SDL_RWops *rw)
+MusicTrack::MusicTrack(SDL_RWops * rw)
 {
 	m_music = Mix_LoadMUS_RW(rw, 0);
 	m_isValid = true;
@@ -25,22 +26,22 @@ MusicTrack::MusicTrack(SDL_RWops *rw)
 	}
 }
 
-SoundTrack::SoundTrack(const char* fileName)
+SoundTrack::SoundTrack(const char * fileName)
 {
 	sound = NULL;
 
-	unsigned char *mem;
+	unsigned char * mem;
 	size_t length = 0;
-	if (!FILESYSTEM_loadFileToMemory(fileName, &mem, &length))
+	if(!FILESYSTEM_loadFileToMemory(fileName, &mem, &length))
 	{
 		throw std::runtime_error("Failed to load soundtrack file, aborting.");
 	}
 
-	SDL_RWops *fileIn = SDL_RWFromMem(mem, length);
+	SDL_RWops * fileIn = SDL_RWFromMem(mem, length);
 	sound = Mix_LoadWAV_RW(fileIn, 1);
 	FILESYSTEM_freeMemory(&mem);
 
-	if (sound == NULL)
+	if(sound == NULL)
 	{
 		fprintf(stderr, "Unable to load WAV file: %s\n", Mix_GetError());
 	}
@@ -53,14 +54,14 @@ SoundSystem::SoundSystem()
 	int audio_channels = 2;
 	int audio_buffers = 1024;
 
-	if (Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers) != 0)
+	if(Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers) != 0)
 	{
 		fprintf(stderr, "Unable to initialize audio: %s\n", Mix_GetError());
 		SDL_assert(0 && "Unable to initialize audio!");
 	}
 }
 
-void SoundSystem::playMusic(MusicTrack* music)
+void SoundSystem::playMusic(MusicTrack * music)
 {
 	if(!music->m_isValid)
 	{

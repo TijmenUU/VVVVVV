@@ -1,11 +1,10 @@
 #pragma once
 
-
 #include <SoundSystem.hpp>
 
 #include <vector>
 
-#define musicroom(rx, ry) ((rx) + ((ry) * 20))
+#define musicroom(rx, ry) ((rx) + ((ry)*20))
 
 class musicclass
 {
@@ -60,6 +59,3 @@ public:
 	bool mmmmmm;
 	bool usingmmmmmm;
 };
-
-
-
