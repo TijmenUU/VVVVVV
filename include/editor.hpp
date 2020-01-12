@@ -1,5 +1,5 @@
-#ifndef EDITOR_H
-#define EDITOR_H
+#pragma once
+
 
 #include <vector>
 #include <string>
@@ -259,4 +259,4 @@ void editorlogic(Graphics& dwgfx, Game& game, musicclass& music, mapclass& map, 
 void editorinput(KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map,
                  entityclass& obj, UtilityClass& help, musicclass& music);
 
-#endif /* EDITOR_H */
+

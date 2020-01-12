@@ -1,5 +1,5 @@
-#ifndef KEYPOLL_H
-#define KEYPOLL_H
+#pragma once
+
 
 #include <string>
 #include <vector>
@@ -82,4 +82,4 @@ private:
 };
 
 
-#endif /* KEYPOLL_H */
+

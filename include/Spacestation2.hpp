@@ -1,5 +1,5 @@
-#ifndef SPACESTATION2_H
-#define SPACESTATION2_H
+#pragma once
+
 
 #include <Game.hpp>
 #include <Entity.hpp>
@@ -14,4 +14,4 @@ public:
 	std::string roomname;
 };
 
-#endif /* SPACESTATION2_H */
+

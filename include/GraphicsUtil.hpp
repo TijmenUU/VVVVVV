@@ -1,5 +1,5 @@
-#ifndef GRAPHICSUTIL_H
-#define GRAPHICSUTIL_H
+#pragma once
+
 
 #include <SDL2/SDL_mixer.h>
 
@@ -48,4 +48,4 @@ SDL_Surface * FlipSurfaceVerticle(SDL_Surface* _src);
 SDL_Surface * ScaleSurfaceSlow( SDL_Surface *_surface, int Width, int Height );
 SDL_Surface* ApplyFilter( SDL_Surface* _src );
 
-#endif /* GRAPHICSUTIL_H */
+

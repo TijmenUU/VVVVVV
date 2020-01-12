@@ -1,5 +1,5 @@
-#ifndef TEXTBOX_H
-#define TEXTBOX_H
+#pragma once
+
 
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_rect.h>
@@ -52,4 +52,4 @@ public:
 
 };
 
-#endif /* TEXTBOX_H */
+

@@ -1,5 +1,5 @@
-#ifndef WARPCLASS_H
-#define WARPCLASS_H
+#pragma once
+
 
 #include <Game.hpp>
 #include <Entity.hpp>
@@ -16,4 +16,4 @@ public:
 	bool warpx, warpy;
 };
 
-#endif /* WARPCLASS_H */
+

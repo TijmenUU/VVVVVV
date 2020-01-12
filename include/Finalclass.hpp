@@ -1,5 +1,5 @@
-#ifndef FINALCLASS_H
-#define FINALCLASS_H
+#pragma once
+
 
 #include <Game.hpp>
 #include <Entity.hpp>
@@ -17,4 +17,4 @@ public:
     bool warpx, warpy;
 };
 
-#endif /* FINALCLASS_H */
+

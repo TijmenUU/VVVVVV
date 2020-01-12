@@ -1,5 +1,5 @@
-#ifndef ENTITY_H
-#define ENTITY_H
+#pragma once
+
 
 #include <Maths.hpp>
 #include <Ent.hpp>
@@ -242,4 +242,4 @@ public:
     int customcrewmoods[6];
 };
 
-#endif /* ENTITY_H */
+

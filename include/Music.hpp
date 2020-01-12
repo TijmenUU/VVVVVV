@@ -1,5 +1,5 @@
-#ifndef MUSIC_H
-#define MUSIC_H
+#pragma once
+
 
 #include <SoundSystem.hpp>
 
@@ -62,4 +62,4 @@ public:
 };
 
 
-#endif /* MUSIC_H */
+

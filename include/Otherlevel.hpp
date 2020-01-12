@@ -1,5 +1,5 @@
-#ifndef OTHERLEVEL_H
-#define OTHERLEVEL_H
+#pragma once
+
 
 #include <Game.hpp>
 #include <Entity.hpp>
@@ -35,4 +35,4 @@ public:
     std::vector<std::string> roomtext;
 };
 
-#endif /* OTHERLEVEL_H */
+

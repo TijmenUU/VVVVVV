@@ -1,5 +1,5 @@
-#ifndef INPUT_H
-#define INPUT_H
+#pragma once
+
 
 #include <KeyPoll.hpp>
 #include <Graphics.hpp>
@@ -25,4 +25,4 @@ void gamecompleteinput(KeyPoll& key, Graphics& dwgfx, Game& game, mapclass& map)
 
 void gamecompleteinput2(KeyPoll& key, Graphics& dwgfx, Game& game, musicclass& music);
 
-#endif /* INPUT_H */
+

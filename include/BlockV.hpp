@@ -1,5 +1,5 @@
-#ifndef BLOCKV_H
-#define BLOCKV_H
+#pragma once
+
 
 #include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_mixer.h>
@@ -29,4 +29,4 @@ public:
 
 };
 
-#endif /* BLOCKV_H */
+

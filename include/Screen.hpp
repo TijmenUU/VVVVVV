@@ -1,5 +1,5 @@
-#ifndef SCREEN_H
-#define SCREEN_H
+#pragma once
+
 
 #include <SDL2/SDL.h>
 
@@ -36,4 +36,4 @@ public:
 
 
 
-#endif /* SCREEN_H */
+

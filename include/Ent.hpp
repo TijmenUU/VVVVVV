@@ -1,5 +1,5 @@
-#ifndef ENT_H
-#define ENT_H
+#pragma once
+
 
 class entclass
 {
@@ -41,4 +41,4 @@ public:
     int yp;int xp;
 };
 
-#endif /* ENT_H */
+

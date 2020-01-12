@@ -1,5 +1,5 @@
-#ifndef TITLERENDERER_H
-#define TITLERENDERER_H
+#pragma once
+
 
 #include <Graphics.hpp>
 #include <UtilityClass.hpp>
@@ -34,4 +34,4 @@ void gamecompleterender(Graphics& dwgfx, Game& game, UtilityClass& help, mapclas
 
 void gamecompleterender2(Graphics& dwgfx, Game& game);
 
-#endif /* TITLERENDERER_H */
+

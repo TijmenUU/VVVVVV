@@ -1,5 +1,5 @@
-#ifndef LOGIC_H
-#define LOGIC_H
+#pragma once
+
 
 #include <Graphics.hpp>
 #include <Game.hpp>
@@ -20,4 +20,4 @@ void towerlogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& musi
 
 void gamelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclass& music, mapclass& map, UtilityClass& help);
 
-#endif /* LOGIC_H */
+

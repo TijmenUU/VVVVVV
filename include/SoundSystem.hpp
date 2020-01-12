@@ -1,5 +1,5 @@
-#ifndef SOUNDSYSTEM_H
-#define SOUNDSYSTEM_H
+#pragma once
+
 
 #include <SDL2/SDL_mixer.h>
 
@@ -26,4 +26,4 @@ public:
 	void playMusic(MusicTrack* music);
 };
 
-#endif /* SOUNDSYSTEM_H */
+

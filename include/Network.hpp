@@ -1,5 +1,5 @@
-#ifndef VNETWORK_H
-#define VNETWORK_H
+#pragma once
+
 
 #include <stdint.h>
 
@@ -25,4 +25,4 @@ void NETWORK_setAchievementProgress(const char *name, int32_t stat);
 }
 #endif
 
-#endif /* VNETWORK_H */
+

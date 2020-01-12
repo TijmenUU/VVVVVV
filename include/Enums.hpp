@@ -1,5 +1,5 @@
-#ifndef ENUMGAME_H
-#define ENUMGAME_H
+#pragma once
+
 
 enum
 {
@@ -8,4 +8,4 @@ enum
 
 };
 
-#endif /* ENUMGAME_H */
+

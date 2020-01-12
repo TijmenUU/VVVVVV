@@ -1,5 +1,5 @@
-#ifndef MATHGAME_H
-#define MATHGAME_H
+#pragma once
+
 
 #include <cmath>
 #include <stdlib.h>
@@ -25,4 +25,4 @@ struct point
     int y;
 };
 
-#endif /* MATHGAME_H */
+

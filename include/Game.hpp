@@ -1,5 +1,5 @@
-#ifndef GAME_H
-#define GAME_H
+#pragma once
+
 
 #include <vector>
 #include <string>
@@ -355,4 +355,4 @@ public:
 
 };
 
-#endif /* GAME_H */
+

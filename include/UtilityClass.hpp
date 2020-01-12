@@ -1,5 +1,5 @@
-#ifndef UTILITYCLASS_H
-#define UTILITYCLASS_H
+#pragma once
+
 
 #include <SDL2/SDL.h>
 #include <vector>
@@ -43,4 +43,4 @@ public:
     std::vector<int> splitseconds;
 };
 
-#endif /* UTILITYCLASS_H */
+

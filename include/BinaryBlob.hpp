@@ -1,5 +1,5 @@
-#ifndef BINARYBLOB_H
-#define BINARYBLOB_H
+#pragma once
+
 
 /* Laaaazyyyyyyy -flibit */
 // #define VVV_COMPILEMUSIC
@@ -38,4 +38,4 @@ private:
 };
 
 
-#endif /* BINARYBLOB_H */
+

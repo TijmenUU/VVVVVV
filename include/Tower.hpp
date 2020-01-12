@@ -1,5 +1,5 @@
-#ifndef TOWER_H
-#define TOWER_H
+#pragma once
+
 
 #include <string>
 #include <vector>
@@ -48,4 +48,4 @@ public:
 
 
 
-#endif /* TOWER_H */
+

@@ -1,5 +1,5 @@
-#ifndef MAPGAME_H
-#define MAPGAME_H
+#pragma once
+
 
 #include <Tower.hpp>
 #include <WarpClass.hpp>
@@ -179,4 +179,4 @@ public:
     int cursorstate, cursordelay;
 };
 
-#endif /* MAPGAME_H */
+
